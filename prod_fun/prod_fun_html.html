@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The Hitchhiker’s Guide to Markup Estimation</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Presented by Hans Martinez" />
+    <script src="prod_fun_html_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# The Hitchhiker’s Guide to Markup Estimation
+## De Ridder et al.
+### Presented by Hans Martinez
+### Oct 22, 2021
+
+---
+
+
+layout: false
+
+
+
+
+
+
+.left-column[
+
+### What's the question?
+
+### Why does it matter?
+
+### What's the contribution?
+
+### How do they do it?
+
+]
+
+--
+
+.right-column[
+
+How big (if any) are the **biases** of our markup estimates due to 
+  1. common assumptions (**Cobb-Douglas** production function) and 
+  2. data limitations (**Revenue** instead of quantity).
+
+Markups are directly linked to aggregate output and total factor productivity. The levels and dispersion of markups have increased over the last 40 years .small[(De Loecker et al., 2020)].
+
+The authors show that: 
+  1. a misspecified production function would estimate **well the level but not the dispersion**, and 
+  2. estimates from revenue data would **mismeasure the level**, but they **do well informing about the markup dispersion** (cross-section and overtime).
+
+The authors use simulations from a quantitative model and rich firm-level administrative production and pricing data.
+
+]
+
+---
+
+## Introduction
+
+-  Markups are usually estimated using the Hall (1986,1988) ratio, `\(\mu=\text{output elasticity of flexible input}\times \frac{\text{Revenue}}{\text{Firm's spending on flexible input}}\)`. 
+
+&lt;!-- -- --&gt;
+
+- The parameters of the production function (PF) are needed. Usually, the two-stage GMM estimator is employed (Acekerberg et al., 2015)(ACF).
+
+--
+
+- However, there are three main criticisms:
+  - **Revenue data**: Estimates of the elasticities for inputs are lower (wrt. production data).
+  - **Cobb-Douglas (CD)**: True PF might be more complex.
+  - **Market power**: Purging measurement error in first stage is not feasible if researchers can't observe marginal costs (we usually can't). .small[(Bond et al., 2020; Doraszelski and Jaumendreu, 2020)]
+
+---
+
+## Introduction
+
+The authors address these criticism in two ways:
+
+--
+
+.pull-left[
+
+### Simulation
+
+Firms compete oligopolistically and have endogeneously heterogeneous markups and translog (TL) PF.
+
+Comparison between true parameter of the production function and estimates from the ACF procedure and Hall markup ratio-estimator.
+
+]
+
+--
+
+.pull-right[
+
+### Empirics
+
+Comparison of markup estimates of different specifications using **firm-level** data on **French manufacturing** firms with at least 20 employees. 
+
+Data contains balance sheets and income statements between 2009 and 2018, and data on the unit values of the sold products. 
+
+]
+
+
+---
+
+## Preview of results
+
+--
+
+- The average level of the **revenue-based** markups is **not informative** of the true average markup. However, **markup dispersion**, both in the cross-section and over time, is **estimated reasonably well.**
+
+--
+
+- The **average markup** when a **CD PF** is assumed is **well** estimated when the true PF is TL, but **dispersion is not.** For the French data, the dispersion of markups under CD is **more than twice** in contrast with the estimates of a TL.
+
+--
+
+- The specification of the **first stage has minor effects** on the estimates of the PF and markups.
+
+---
+
+## Analytical framework
+
+&lt;!-- -- --&gt;
+
+- Firms produce output `\(Y_{it}\)` using one input `\(V_{it}\)`. Total factor productivity (TFP) shocks in logs, unobserved to the econometrician, `\(\omega_{it}\)`. 
+
+&lt;!-- -- --&gt;
+
+- Lower-caps denote log-deviations from the mean, `\(x_{it}=\log X_{it}- \mathbf E[\log X_{it}]\)`
+
+&lt;!-- -- --&gt;
+
+- Measurement error is log-additive, `\(\eta_{it}\)`.
+
+&lt;!-- -- --&gt;
+
+`\begin{equation}
+y_{it}=\alpha v_{it} + \omega_{it} + \eta_{it}
+\end{equation}`
+
+&lt;!-- -- --&gt;
+
+- `\(v_{it}\)` is variable and static (flexible: choice is determined in the period). `\(\omega_{it}\)` is iid across time and firms.
+
+--
+
+- Markups, `\(\mu_{it}=\alpha (P_{it} Y_{it})/(W_{t}V_{it})\)`. `\(P_{it}\)` firm's price, `\(W_{t}\)`, factor price.
+
+---
+name: est
+
+## Two-stage GMM procedure
+
+Assume: `\(\mathbf E[\hat \eta_{it} v_{it-1}]=0\)` and `\(\mathbf E[\hat\omega_{it} v_{it-1}]=0\)`.
+
+--
+
+#### GMM estimator (Def. 5)
+
+&gt; The GMM estimator is `\(\hat \alpha \in \mathbf R\)` such that the moment `\(\mathbf E [(\widehat{\omega_{it}+\eta_{it}})v_{it-1}]\)` is equal to zero, where `\(\widehat{\omega_{it}+\hat{\eta}_{it}}=y_{it}+\hat \alpha v_{it}=(\alpha-\hat\alpha )v_{it}+\omega_{it}+\eta_{it}\)`.
+
+--
+
+Then, 
+
+`\begin{equation}
+  \mathbf E \left[ (\hat \omega_{it}+\hat \eta_{it})v_{it-1}\right]=(\alpha-\hat\alpha)\mathbf E[v_{it}v_{it-1}]=0
+\end{equation}`
+
+
+The estimator is unbiased, as long as `\(\mathbf E[v_{it}v_{it-1}]\not=0\)`. The measurement error only increases the variance of the composite error term `\(\omega_{it}+\eta_{it}\)`.
+
+.footnote[[Productivity](#productivity)]
+
+---
+
+## Potential biases
+
+### Revenue versus quantity
+
+
+`\begin{equation}
+  r_{it} = y_{it}+p_{it}=\alpha v_{it}+\omega_{it}+p_{it}
+\end{equation}`
+
+- `\(r_{it}\)`, log mean deviation of revenue. `\(p_{it}\)` log mean deviation of price.
+
+--
+
+#### GMM estimator on revenue
+
+&gt; The GMM estimator is `\(\hat\alpha \in \mathbf R\)` such that the moment `\(\mathbf E [\widehat{tfpr}_{it}v_{it-1}]=0\)`, where `\(\widehat{tfpr}_{it}=p_{it}+y_{it}-\hat\alpha v_{it}=(\alpha-\hat\alpha) v_{it}+p_{it}+\omega_{it}\)`.
+
+--
+
+`\begin{equation}
+  \hat\alpha =\alpha +\frac{\mathbf E [p_{it}v_{it-1}]}{\mathbf E [v_{it}v_{it-1}]}
+\end{equation}`
+
+---
+
+## Potential biases
+
+### Cobb-Douglas vs. Translog
+
+`\begin{equation}
+  y_{it}=\alpha v_{it}+\beta v^2_{it}+\omega_{it}.
+\end{equation}`
+
+- Assume true PF is TL.
+
+--
+
+#### Misspecified GMM estimator
+
+&gt; The misspecified GMM estimator `\(\hat\alpha \in \mathbf R\)` such that `\(\mathbf E [\hat\omega^{Mis}_{it}v_{it-1}]=0\)`, where `\(\hat\omega^{Mis}_{it}=y_{it}-\hat\alpha v_{it}=(\alpha-\hat\alpha)v_{it}+\beta v^2_{it}+\omega_{it}\)`.
+
+--
+
+`\begin{equation}
+  \hat\alpha=\alpha+\beta\frac{\mathbf E[v^2_{it}v_{it}]}{\mathbf E[v_{it}v_{it-1}]}
+\end{equation}`
+
+---
+
+## Effects on markups
+
+The authors show that:
+
+--
+
+.pull-left[
+
+### Revenue vs. quantity
+
+
+- Revenue-based markups are **equal** to the true markup up to a **constant.**
+
+- `\(\mathbf{Var}[\log \hat\mu^R_{it}]=\mathbf{Var}[\log \mu_{it}]\)`
+]
+
+--
+
+.pull-right[
+
+### CD vs. TL
+
+- The average log estimated markup using a misspecified PF is **equal** to the average true markup up to a **Jensen's inequality.**
+
+- The correlation and **variance** of the misspecified markups are **different** from the true ones.
+
+]
+
+---
+name: data
+
+## Data
+
+Two main datasets:
+
+- FARE ( _Fichier Approché des Resultats d'Esane_ ): Detailed balance sheet and income statement. Originates from filings to the tax administration (DGFiP).
+
+- EAP ( _Enquête Annuelle de Production_ ): Revenues and quantities that firms ship (proxy for prices). Product-level statistical survey by INSEE (statistical office) covering manufacturing firms with at least 20 employees or revenue in excess of 5 million euros.
+
+.footnote[
+
+[Summary statistics](#table1)
+
+]
+
+---
+
+## Simulation | Model
+
+&lt;!-- -- --&gt;
+
+### Demand 
+
+Double nested CES demand system. `\(N\)` discrete markets.
+
+`\begin{equation}
+  Y_t=\left[ \sum^N_{h=1} Y_{ht}^{\frac{\sigma-1}{\sigma}} \right]^{\frac{\sigma}{\sigma-1}} ;\quad
+  Y_{ht}=\left[ \sum^{N_h}_{h=1} Y_{iht}^{\frac{\varepsilon-1}{\varepsilon}} \right]^{\frac{\varepsilon}{\varepsilon-1}}
+\end{equation}`
+
+- `\(h\)` indexes markets and `\(i\)` firms. `\(\sigma\)` is the elasticity of substitution (ES) across markets, and `\(\varepsilon\)` ES across firm-level goods within a market. 
+
+- `\(\varepsilon &gt; \sigma\)`, easier to substitute across firms than across markets.
+
+---
+
+## Simulation | Model
+
+### Technology
+
+The production function for log output `\(y_{iht}\)` is TL
+
+`\begin{equation}
+  y_{iht}=\omega_{it}+\gamma\alpha v){iht}+\gamma(1-\alpha)k_{iht}+
+  \gamma\frac{\alpha(1-\alpha)(\phi-1)}{2\phi}(v^2_{iht}+k^2_{iht}-2k_{iht}v_{iht})
+\end{equation}`
+
+- `\(v_{iht}\)` is the log of the variable input, and `\(k_{iht}\)`, the log of the fixed input.
+
+- `\(\omega_{it}\)` is the log of (hicks-neutral) total factor productivity, `\(\gamma\)` returns to scale, `\(\alpha\)` the weight of the variable input in the PF, and `\(\phi\)` is the ES between flexible and fixed input.
+
+---
+name: cal
+
+## Model | Equilibrium
+
+&gt; Given an exogenous sequence for 
+&gt; 1. variable input prices `\(W_{t}\)` (agg. shock),
+&gt; 2. aggregate demand `\(P_t^\sigma Y_t\)` (agg. shock),
+&gt; 3. productivities `\(\omega_{iht}\)`, and
+&gt; 4. fixed factors `\(k_{iht}\)`
+&gt;
+&gt; the equilibirum is defined as a sequence of markups `\(\mu_{iht}\)`, prices `\(P_{iht}\)`, log marginal costs `\(mc_{iht}\)`, market shares `\(s_{iht}\)`, variable inputs `\(v_{iht}\)` and output `\(y_{iht}\)`, and sector price indices `\(P_{ht}\)` such that FOC's of the firms are met, prices are the product of maringal costs, etc... 
+
+--
+
+**Calibration**: 1440 firms, divided into 180 markets, 40 periods. 13 parameters to calibrate.
+
+.small[
+[Parameters](#par)
+]
+
+
+---
+
+## Results
+
+- Estimate different specifications using the simulations.
+
+- All specifications assume that variable input is correctly `\(v_{iht}\)`.
+
+- Preferred specification: 
+  1. quanntity data;
+  1. first-stage using log of the price, market shares and a third order expansion of the inputs `\(v_{it}\)` and `\(k_{it}\)`;
+  1. TLPF 
+  
+`\begin{equation}
+  y_{iht}=\beta_v v_{iht}+\beta_k k_{iht} + \beta_{vv} v^2_{iht}+\beta_{kk} k^2_{iht} + \beta_{vk} v_{iht} k_{iht}+\omega_{iht}
+\end{equation}`
+
+---
+format: false
+
+&lt;img src="t4.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+![](t5.png)
+
+---
+
+![](t6.png)
+
+---
+
+![](t7.png)
+
+---
+
+## Take-away
+
+- Revenue-based estimates of the PF elasticities are biased. 
+
+- Accuracy of the PF estimates declines if no first-stage is conducted.
+
+- CD estimates of the markups are similar in terms of average values, but understate the dispersion of the markups.
+
+---
+
+## Empirics
+
+Elasticities of quantities and revenue with different specifications (12 specifications for the 19 industries).
+
+1. Elasticity of revenue wrt materials (ERM) is usually lower than the elasticity of quantity (EQM). EQM is 34% higher on average the ERM.
+
+1. First-stage specification has only modest effects. Minor differences between Full and no first-stage at all.
+
+1. High heterogeneity in the elasticities of output wrt materials (EOM). High EOM: furniture and chemicals. Low EOM: textile and leather.
+
+---
+
+&lt;img src="t9.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+![](f2.png)
+---
+
+# Take-away
+
+- Revenue-based estimates of markups are consistently lower than quantity-based estimates.
+
+- The standard deviation of the estimated markups is significantly higher for the CDPF.
+
+- The functional form of the PF has a greater effect on markup estimates than the first-stage specification.
+
+---
+
+## Conclusions
+
+- The average markup is estimated well under CD, but the dispersion is not.
+
+- In contrast to the quantity-based markup estimates, the revenue-based one miss the level but hit dispersion.
+
+- First-stage specification has modest effects on the markup estimates.
+
+
+---
+class: inverse center middle
+
+# À la prochain!
+
+---
+name: productivity
+
+## Productivity
+
+- The difference between `\(\omega_{it}\)` and `\(\eta_{it}\)` is that `\(\omega\)` is observed by the firm, and affects its choice of `\(v_{it}\)`.
+
+- The demand for `\(v_{it}\)` is an invertible function in productivity. Then, `\(\omega=v^{-1}(v_{it},\Xi_{it})\)`.
+
+- First stage becomes a non-parametric regression:
+
+`\begin{equation}
+y_{it}=\Phi(v_{it},\Xi_{it})+\eta_{it}
+\end{equation}`
+
+- Authors use time fixed effects, output prices and market shares (as a proxi for markups) in their estimations.
+
+.footnote[[&amp;#x2B05; Back](#est)]
+
+---
+format: false
+name: table1
+
+![](t1.png)
+
+.footnote[[&amp;#x2B05; Back](#data)]
+
+---
+name: par
+
+![](t3.png)
+
+.footnote[[&amp;#x2B05; Back](#cal)]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

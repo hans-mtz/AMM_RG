@@ -1,0 +1,210 @@
+---
+title: "Trade and Income - Exploiting Time Series in Geography"
+author: "Hans Martinez"
+date: "`r format(Sys.time(),'%B %d, %Y')`"
+output:
+  beamer_presentation:
+    incremental: yes
+    slide_level: 3
+    template: template.tex
+latex_engine: xelatex
+make149: yes
+handout: no
+subtitle: 'Feyrer (2019) AEJ:Applied Economics'
+classoption: mathserif
+titlegraphic: Horizontal.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview
+
+### Overview
+
+- **What's the question?** Does more trade increase income?
+- **Why does it matter?** Economist tend to assume yes, but it's challeging to identify direction of causality empirically.
+- **What's the contribution?** Author generates a time-varying geographic instrument to solve for omitted variable bias of previous attempts, and identifies a positive causality effect of trade on income.
+- **How do they do it?**  Identification comes from the shift over time from sea to air transportation. Country pairs benefit differently from this shift.
+
+# Introduction
+
+### Introduction
+
+- Though wealthier countries trade more than poorer ones, it is difficult to assess the *direction of causality*. 
+- Frankel and Romer (1999) use the distance between countries to predict bilateral trade.
+- However, time-invariant geographic instrumenst are susceptible to *omitted variable bias* (e.g. coutries nearer the equator have longer trade routes and might have lower income due to uproductive colonial institutions)(Rodriguez and Rodrik, 2001).
+
+### Introduction
+
+> **Key idea:** Effictive distances around the globe **change over time** as they are determined by the inteaction between physical geography and transportation technology.
+
+- In particular, the drop in **air freight transportation** costs have led to a substantial shift to this mode of shipping.
+
+----
+
+<!-- ![](usair.png) -->
+
+
+### Introduction
+
+> **Key insight:** Improvements in technology of air transport have differential consecuences for different countries.
+
+
+For example:
+
+- Japan $\longleftrightarrow$ Germany:
+    - Sea: 12,000 > Air: 5,000 nautical miles
+- US $\longleftrightarrow$ Germany:
+    - Sea $\approx$ Air
+    
+### Contribution
+
+- Gravity equations that include both **air and sea distances** are used to create time-series predictions for bilateral trade.
+- These predictions are used as **instruments in a panel regression** of trade on income to control for country fixed effects.
+- This estimates are **less likely to be biased** by omitted variables.
+
+# Framework
+
+### Framework | Goal: impact of trade on GDP
+
+$$
+ln(y_{it})= \gamma_i+\gamma_t+\beta\times ln(trade_{it})+\epsilon_{it} \qquad \text{(1)}
+$$
+
+where:
+
+- $y_{it}$: real GDP per capita
+- $\gamma_i$ and $\gamma_y$ country and time fixed effects
+- $trade_{it}$ us the sum of imports and exports for contry *i* at time *t*
+
+**OLS** of (1) would not be identified because of reverse causality
+**IV** strategy is employed: estimating trade using gravity equations in first stage
+
+[\tiny{$\blacktriangleright$ Instrument}](#inst) [\tiny{$\blacktriangleright$ Instrument Caveats}](#cav)
+
+# Gravity model estimation
+
+### Gravity model estimation {#grav}
+
+Anserson and van Wincoop (2003):
+
+$$
+trade_{ijt} = \frac{y_{it}y_{jt}}{y_{wt}} \left( \frac{\tau_{ijt}}{P_{it}P_{jt}} \right)^{1-\sigma}
+$$
+
+- $trade_{ijt}$: bilateral trade between country *i* and country *j* at time *t*
+- $y_{it}$, $y_{jt}$ and $y_{wt}$: incomes
+- $P_{it}$ and $P_{jt}$: country-specific multilateral resistance terms
+
+### Gravity model estimation
+
+In estimations:
+
+$$\begin{aligned}
+ln(trade_{ijt})&=\alpha + \gamma_{i} + \gamma_j + \gamma_t + \beta_{sea,t}\times ln(seadist_{ij}) \qquad \text{(2)} \\
+&+ \beta_{air,t}\times ln(airdist_{ij}) + \beta \boldsymbol{X}_{ij} + \epsilon_{ijt}
+\end{aligned}$$
+
+$$\begin{aligned}
+ln(trade_{ijt})&=\alpha + \gamma_{ij} + \gamma_t + \beta_{sea,t}\times ln(seadist_{ij}) \qquad \text{(3)} \\
+&+ \beta_{air,t}\times ln(airdist_{ij}) +  \epsilon_{ijt}
+\end{aligned}$$
+
+- *P* and *y* terms are controlled using dummy countries
+-  Time effects control for common rates of growth. Idiosyncratic growth rate differences will go to error term. Second stage will control for these effects
+- $\tau_{ijt} =f_t(airdist_{ij},seadist_{ij})$
+- Predicted values are aggregated and used as instrument in second stage
+
+[\tiny{$\blacktriangleright$ Instrument}](#inst) [\tiny{$\blacktriangleright$ Instrument Caveats}](#cav)
+
+# Data
+
+### Data {#dat}
+
+- **Trade:** Glick and Taylor (2010) from IMF Direction of Trade
+
+- **Air distance:** CEPII's population-weighted great circle distance
+
+- **Sea distance:** Author's own estimations using gridded geographic data from CIESIN
+
+# Results
+
+### Results | Trade regresssions {#res}
+
+<!-- ![](grav.png) -->
+
+[\tiny{$\blacktriangleright$ Tables (Appendix)}](../Feyrer2019/app20170616.pdf)
+
+### Regression income on trade
+
+<!-- ![](gregs.png) -->
+
+---
+
+<!-- ![](mainregs.png) -->
+
+### Results summary
+
+- $\beta_{iv}$ > $\beta_{OLS}$, no statistically significant though. Overlap with previous estimates (Franker and Romer, 1999)
+
+- First stage *F*-statistic over 15 in all cases
+
+- Full gravity instrument can predict **17 percent** of variation in growth rates
+
+- **R^2 are unusually high** (!)
+
+# Conclusions
+
+### Conclusions
+
+- Paper introduces idea that **effective distance changes over time** as is determined by technology changes in transportation
+
+- These changes are exploited to identify **causality effect** of trade on income
+
+- Trade has a **positive** impact on output
+
+- Changes in trade account for **17 percent of variation** in growth rates across countries between 1960 and 1995
+
+# Appendix
+
+### {.plain}
+
+
+![](Stacked.png){width=50%}
+
+### Instrument {#inst}
+
+Bilateral trade predictions take the form
+
+$$
+ln(trade_{it}) = f_t(\boldsymbol{X}_{ij},\boldsymbol{X}_i,\boldsymbol{X}_j)
+$$
+where:
+
+- $\boldsymbol{X}_{ij}$: time-invariant pair characteristics
+- $\boldsymbol{X}_{i}$ and $\boldsymbol{X}_{j}$: time-invariant individual country characteristics
+
+### Instrument
+
+Fixed country effecs in second step implies we can drop $\boldsymbol{X}_{i}$. Also, a functional form for $f_t(\cdot)$ is the following:
+
+$$
+ln(trade_{ijt})= \boldsymbol{X}_j + \beta_{sea,t}\times ln(seadist_{ij})+\beta_{air,t}\times ln(airdist_{ij})
+$$
+
+- $\beta$'s: time changing weights on the two measures that vary according to technology changes
+- $\boldsymbol{X}_j$: scales the time-variant distance relationship with time-invariant characteristics of the partner
+
+[\tiny{$\blacktriangleright$ Results}](#res) [\tiny{$\blacktriangleright$ Gravity Model Estimation}](#grav)
+
+### Caveats {#cav}
+
+- Exclusion restrictions: Increases in the movement of people generating increases in GDP $\implies$ Reduced form regressions can be interpreted as general effects of globalization
+
+- LATE: Heterogeneous gains from air shipping. Countries that take advantage of air travel have more to gain than countries that do not. Instrument $\implies$ LATE of the countries that embrace air freight
+
+  
+[\tiny{$\blacktriangleright$ Results}](#res)
+  
