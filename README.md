@@ -1,3 +1,3 @@
 # AMM_RG
 
-Slides: [html](https://raw.githack.com/hans-mtz/AMM_RG/main/prod_fun/prod_fun_html.html)
+Slides: [html](https://rawcdn.githack.com/hans-mtz/AMM_RG/5acaa39a51ff4333ed0285d8ed3c096f7bf01d52/prod_fun/prod_fun_html.html)
