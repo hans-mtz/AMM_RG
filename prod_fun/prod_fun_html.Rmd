@@ -56,8 +56,11 @@ style_duo_accent(
     display = "flex",
     width   = "100%",
     flex    = "1 1 auto"
-  )
-)
+    )
+  ),
+  header_font_google = google_font("Marcelus", "400"),
+  text_font_google   = google_font("Arimo", "400", "400i"),
+  code_font_google   = google_font("IBM Plex Mono")
 )
 
 
