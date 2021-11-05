@@ -184,7 +184,6 @@ layout: true
 * **Approach**: 
   1. Search model to calibrate frictions and recover counterfactual matches.
   2. 2SGMM procedure for Production function + productivity monotonic in immigrant skills.
-  
 
 ---
 layout: false
@@ -192,4 +191,4 @@ class: center, middle
 
 # Thanks!
 
-.footnote[[**Slides**](https://github.com/yihui/xaringan)]
+.footnote[[**Slides**](https://rawcdn.githack.com/hans-mtz/Slides/2d8d96ba612b13fad8c847552621bcc6482b6956/VA/SRP_MP.html)]
