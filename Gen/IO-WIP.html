@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Meeting: S.N.</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Hans Martinez" />
+    <script src="IO-WIP_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Meeting: S.N.
+### Hans Martinez
+### Nov 08, 2021
+
+---
+
+
+
+
+
+
+## Objective
+
+- Thesis Committee invitation Main advisor
+  - Summer paper
+  - Work-in-progress ideas
+  - Data
+
+---
+class: inverse center middle
+
+# Stochastic revealed preferences and market power
+
+---
+layout: true
+### SRP + Mkt Power
+
+---
+
+- **Question:** Do the observed price and quantities in the oil industry arise as an equilibrium of Cournot competition. if quantities are mismeasured?
+
+- **What I do:** I use tools developed by Schnenach (2014) and adapted by Aguiar and Kashaev (2020) to introduce measurement error in Carvajal (2013).
+
+- **What I find:** Ignoring measurement error leads to an over-rejection of the Cournot model.
+
+- **Limitations:** 1) Silent about Market Power 2) Demand 3) Technical issues (iid, power, unobserved real prices)
+
+---
+
+- 3 interesting questions to applied IO researchers:
+  1. Counterfactual demand estimates. Intuition: Products with similar characteristics should attract similar buyers.
+  1. Recover marginal costs/ markups
+  1. How much is driven by parametric assumptions?
+
+- What's next?
+  1. Reformulate using profit function
+  1. Bertrand and product differentiation
+  1. Define Market and find data (RTE Cereal, airplane trips, yogurts, detergents)
+  
+---
+layout: false
+class: inverse center middle
+
+# Aggressive entry, prices and productivity
+
+---
+
+### Aggressive entry, prices and productivity
+
+
+* Standard economic theory:
+  * `\(p_{it}-mc_{i}(\omega_i)\ge0\)`, 
+  * `\(\implies\)` most productive firm, lowest price 
+  * `\(\implies\)` market shares inform about firms' productivity and markups.
+
+* Firms might forgo **today's** profits if the cost of recovering market shares **tomorrow** is greater than immediate losses.
+
+* Case of study: Whirlpool vs LG (US international trade commission) .small[(Flaaen et al., _AER_ 2020 )]
+
+
+---
+
+&lt;img src="tl.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+&lt;!-- ![](tl.png) --&gt;
+---
+### Aggressive entry, prices and productivity
+
+* **Questions**: How do incumbent firms form beliefs about the productivity of new competing firms .small[(Aguirregabiria and Jeon, _Rev.Ind.Organ._ 2020)]? How do firms react against aggressive entry? 
+
+* **Data**: Nielsen .small[Flaaen et al.(_AER_ 2020 ) Gap Intelligence + Traqline Market Research]
+
+* **Method**: Structural dynamic model with beliefs 
+
+---
+layout: false
+class: inverse center middle
+
+# Immigrant job market and productivity losses in Canada
+
+---
+layout: true
+
+### IJB + productivity losses
+
+---
+
+* Immigrants are key for the economic development of Canada by filling in the gaps in the labor market. By 2036, 30% of pop. .small[(Mortency et al., 2017)]
+
+* However, immigrants suffer unemployment and underemployment .small[(Adamuti-Trache, 2016)], and face multiple frictions (financial, signaling, networks).
+
+* Furthermore, employers do not actively recruit immigrants, can't assess foreign credentials, don't assess immigrants competencies, have a preference for Canadian experience and domestic candidates .small[(Chhinzer and Oh, 2021)]. Firm side remains understudied. 
+
+---
+
+* **Question**: Frictions in the Canadian job market for immigrants (TFW and SIE) and for employers negatively affect firms' productivity. How big? Can we measure them?
+
+* **Data**: StatsCan + IRCC linked databases
+
+* **Approach**: 
+  1. Search model to calibrate frictions and recover counterfactual matches.
+  2. 2SGMM procedure for Production function + productivity monotonic in immigrant skills.
+
+
+---
+layout: false
+class: inverse center middle
+
+# Tax evasion and productivity in Mexico
+
+---
+layout: true
+
+### Tax evasion and productivity
+
+---
+
+* Firms have incentives to under-report profits to avoid taxes. Productivity estimates are likely to be biased.
+
+* Mexico: Non-detected tax evasion up to $10 billion USD per year .small[(Zumaya et al., 2021)]
+
+* Centering/location condition by incentive constraint? .small[(Hu and Schennach, 2008)].
+
+`\begin{align}
+  y&amp;=f(x^*,\omega) \\
+  x&amp;=x^*+\Delta x(s) \\
+  \Delta x(s) &amp;= \left \{ \begin{array}{ll}
+    0 &amp; (1-\tau)\Pi(x^*) \ge \Pi(x^*)-\tau\Pi(x)-\kappa Pr(a)-c(\Delta x) \\
+    \mathbf R_{++} &amp; otherwise
+  \end{array} \right.\\
+\end{align}`
+
+---
+
+* **Question**: Can we use a micro-founded IC as location condition? `\(M[f]=x^*\)`, where `\(M[f]\)`:
+
+`\begin{equation}
+  \sup\left \{ v: \int^{v}_{x^*} \left \{ \tau [\Pi(x^*)-\Pi(x)]-c(x-x^*)\right\} f_{X|X^*}(x|x^*) dx \le\kappa Pr(a)  \right\}
+\end{equation}`
+
+* **Data**: INEGI-EMIM, Anonymized tax filings (?) .small[(Zumaya et al., 2021)]
+
+* **Approach**: Hu &amp; Schennach (2008), Hu (2021) 
+
+
+---
+layout: false
+class: center, middle
+
+# Thanks!
+
+.footnote[[**Slides**](https://rawcdn.githack.com/hans-mtz/Slides/dc746240e09ce7f7cf542078f0dec3e4a29db663/VA/SRP_MP.html)]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
