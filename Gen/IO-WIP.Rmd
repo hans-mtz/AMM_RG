@@ -204,4 +204,3 @@ class: center, middle
 
 # Thanks!
 
-.footnote[[**Slides**](https://rawcdn.githack.com/hans-mtz/Slides/dc746240e09ce7f7cf542078f0dec3e4a29db663/VA/SRP_MP.html)]
