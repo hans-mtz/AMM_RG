@@ -61,7 +61,7 @@ style_duo_accent(
 layout: false
 class: inverse center middle
 
-# Immigrant job market and productivity losses in Canada
+# Immigrant job market (IJB) and productivity losses in Canada
 
 ---
 layout: true
@@ -80,7 +80,9 @@ layout: true
 
 * On the other hand, Firms face higher costs when hiring an immigrant (non-PR, TFW): LMIA ($1000, complex and inconsistent process, long time) .small[(HC, 2016)] 
 
-* Firms believe native candidates are more competitive than foreign; however, SIEs have more education and experience on average. Likewise, foreign work experience is discounted, while Canadian experience is more valued .small[(Chhinzer and Oh, 2021)]. 
+* Firms believe native candidates are more competitive than foreign; however, SIEs have more education and experience on average .small[(Chhinzer and Oh, 2021)].
+
+* Likewise, foreign work experience is discounted, while Canadian experience is more valued .small[(Chhinzer and Oh, 2021)]. 
 
 * Furthermore, employers do not actively recruit immigrants (PR, SIE), cannot assess foreign credentials, and do not evaluate immigrants' competencies .small[(Chhinzer and Oh, 2021)]. 
 
