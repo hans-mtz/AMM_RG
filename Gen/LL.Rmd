@@ -1,0 +1,104 @@
+---
+title: "Meeting: L.L."
+subtitle: ""  
+author: "Hans Martinez"
+date: '`r format(Sys.Date(),"%b %d, %Y")`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%/%total%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#4F2683",
+  secondary_color = "#4F2683",
+  inverse_header_color = "#FFFFFF",
+  base_font_size = "30px",
+  title_slide_background_image = "Horizontal_Rev.png",
+  title_slide_background_size = "5% no-repeat",
+  title_slide_background_position = "bottom",
+  extra_css = list(
+  ".small" = list("font-size" = "80%"),
+  ".full-width" = list(
+    display = "flex",
+    width   = "100%",
+    flex    = "1 1 auto"
+    )
+  ),
+  header_font_google = google_font("Merriweather", "400","400i","700"),
+  text_font_google   = google_font("Arimo", "400", "400i"),
+  code_font_google   = google_font("IBM Plex Mono")
+)
+```
+
+## Objective
+
+- Work-in-progress idea
+- Feasibility
+- Data
+
+---
+layout: false
+class: inverse center middle
+
+# Immigrant job market and productivity losses in Canada
+
+---
+layout: true
+
+### IJB + productivity losses
+
+---
+
+* Immigrants are critical for the economic development of Canada by filling in the gaps in the labor market. By 2036, 30% of pop. will be immigrants .small[(Mortency et al., 2017)]
+
+* There is a positive association between the share of immigrants in a firm and the firm's productivity. High-skilled immigrants are associated with higher firm profits .small[(Gu et al., 2020)], and innovation .small[(Blit et al., 2021)].
+
+* However, immigrants suffer unemployment and underemployment .small[(Adamuti-Trache, 2016)].
+
+---
+
+* On the other hand, Firms face higher costs when hiring an immigrant (non-PR, TFW): LMIA ($1000, complex and inconsistent process, long time) .small[(HC, 2016)] 
+
+* Firms believe native candidates are more competitive than foreign; however, SIEs have more education and experience on average. Likewise, foreign work experience is discounted, while Canadian experience is more valued .small[(Chhinzer and Oh, 2021)]. 
+
+* Furthermore, employers do not actively recruit immigrants (PR, SIE), cannot assess foreign credentials, and do not evaluate immigrants' competencies .small[(Chhinzer and Oh, 2021)]. 
+
+* Firm side remains understudied. 
+
+---
+
+* **Question**: Frictions on both sides of the Canadian job market for immigrants (TFW and SIE) negatively affect firms' productivity. How significant are these losses? Can we measure them?
+
+* **Data**: StatsCan employer-employee + IRCC linked databases
+
+* **Approach**: 
+  1. Search model to calibrate frictions and recover counterfactual matches.
+  2. 2SGMM procedure for Production function (GNR) + productivity monotonic in immigrant skills.
+
+---
+layout: false
+class: center, middle
+
+# Thanks!
+
