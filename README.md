@@ -10,4 +10,4 @@ DR: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/DR.html)
 
 DC: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/DC.html)
 
-LL: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/LL.html)
+AB: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/AB.html)
