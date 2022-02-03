@@ -11,3 +11,5 @@ DR: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/DR.html)
 DC: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/DC.html)
 
 AB: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/AB.html)
+
+CPD: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/SP_02-2022.html)
