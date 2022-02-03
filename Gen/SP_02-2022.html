@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 
 # Cournot rationalizability and measurement error
 ### Hans Martinez
-### Feb 02, 2022
+### Feb 03, 2022
 
 ---
 
@@ -157,7 +157,7 @@ layout: true
 - We can summarize the empirical content of the SCR by a set of moment conditions. 
 - Let `\(\mathbf e=(\delta,\mathbf{w})'\in E|X\)` denote the vector of random latent variables and
 - `\(\mathbf{x}=(\mathbf{q},\mathbf{p})'\)` the vector of observed random variables. 
-- Moreover, let `\(\mathcal{P}_X\)`, `\(\mathcal{P}_{E,X}\)`, and `\(\mathcal{P}_{E|X}\)` denote the set of all probability measures defined over the support of `\(\mathbf{x}\)`,($\mathbf{e},\mathbf{x}$), and `\(\mathbf{e}|\mathbf{x}\)`, respectively. 
+- Moreover, let `\(\mathcal{P}_X\)`, `\(\mathcal{P}_{E,X}\)`, and `\(\mathcal{P}_{E|X}\)` denote the set of all probability measures defined over the support of `\(\mathbf{x}, (\mathbf{e},\mathbf{x}), \text{ and } \mathbf{e}|\mathbf{x}\)`, respectively. 
 
 ---
 
@@ -165,8 +165,8 @@ Define the following moment conditions:
 
 `$$\begin{aligned}
 g_M(\mathbf{x},\mathbf{e})&amp;=\mathbf{p}'_{t}\mathbf{w}^q_{t}, \\
-g_{R}(\mathbf{x},\mathbf{e})&amp;= \mathbb 1 \left[ \frac{\mathbf{p}_t-\delta_{it}}{\mathbf{q}_{it}-\mathbf{w}^q_{it}}=\frac{\mathbf{p}_t-\delta_{jt}}{\mathbf{q}_{jt}-\mathbf{w}^q_{jt}}\ge0\right]-1, \\
-g_{C}(\mathbf{x},\mathbf{e})&amp;= \mathbb 1 \left[(\delta_{it}-\delta_{is})(\mathbf{q}_{it}-\mathbf{w}^q_{it}-\mathbf{q}_{is}+\mathbf{w}^q_{is})\ge0\right]-1,\\
+g_{R}(\mathbf{x},\mathbf{e})&amp;= \mathbf 1 \left[ \frac{\mathbf{p}_t-\delta_{it}}{\mathbf{q}_{it}-\mathbf{w}^q_{it}}=\frac{\mathbf{p}_t-\delta_{jt}}{\mathbf{q}_{jt}-\mathbf{w}^q_{jt}}\ge0\right]-1, \\
+g_{C}(\mathbf{x},\mathbf{e})&amp;= \mathbf 1 \left[(\delta_{it}-\delta_{is})(\mathbf{q}_{it}-\mathbf{w}^q_{it}-\mathbf{q}_{is}+\mathbf{w}^q_{is})\ge0\right]-1,\\
 \forall i\not=j \in \mathcal I, t\not=s \in \mathcal T \notag
 \end{aligned}$$`
 
