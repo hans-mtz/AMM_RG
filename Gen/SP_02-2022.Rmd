@@ -1,0 +1,328 @@
+---
+title: "Cournot rationalizability and measurement error"
+subtitle: ""  
+author: "Hans Martinez"
+date: '`r format(Sys.Date(),"%b %d, %Y")`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%/%total%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+header-includes:
+  - \usepackage{bbm}
+  - \usepackage{eucal}
+  - \usepackage{bm}
+  - \usepackage{amsmath}
+  - \usepackage{longtable}
+  - \usepackage{booktabs}
+  - \newtheorem{definition}{Definition}
+  - \newtheorem{theo}{Theorem}
+  - \newtheorem{lemma}{Lemma}
+  - \usepackage[lite]{mtpro2}
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#4F2683",
+  secondary_color = "#4F2683",
+  inverse_header_color = "#FFFFFF",
+  base_font_size = "30px",
+  title_slide_background_image = "Horizontal_Rev.png",
+  title_slide_background_size = "5% no-repeat",
+  title_slide_background_position = "bottom",
+  extra_css = list(
+  ".small" = list("font-size" = "80%", 
+                  "color" = "#4F2683"),
+  ".full-width" = list(
+    display = "flex",
+    width   = "100%",
+    flex    = "1 1 auto"
+    )
+  ),
+  header_font_google = google_font("Merriweather", "400","400i","700"),
+  text_font_google   = google_font("Arimo", "400", "400i"),
+  code_font_google   = google_font("IBM Plex Mono")
+)
+```
+
+```{r setup2, include=FALSE}
+mypath <- "/Volumes/SSD Hans/Github/Adv Micro/Market Power/RP_Cournot/RP_Cour/results"
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+### Overview
+
+- **What’s the question?**: Do the observed prices and quantities arise as an equilibrium of the Cournot model when quantities are mismeasured?
+- **Why does it matter?**: Measurement Error (ME) is ubiquitous. Ignoring ME leads to an over-rejection of the Revealed Preference (RP) deterministic test. .small[(Aguiar & Kashaev, 2020)].
+- **How do I do it?**: I design a stochastic test of the Cournot model by introducing ME to Carvajal et al. (.small[*ECTA*, 2013]). I use *Entropic Latent Variable Integration via Simulation* (ELVIS) .small[(Schennach, 2018)] to estimate the test following Aguiar & Kashaev .small[ ( *RESTUD*, 2020)].
+- **What do I find?**: The Cournot hypothesis can no longer be rejected at the 5% significance level once ME in quantities is introduced.
+
+---
+layout: true
+### Introduction
+
+---
+
+- Long-standing question in economics .small[(Afriat, 1967)].
+- In contrast to the parametric efforts, the RP approach relies only on minimal assumptions.
+- Until recently the RP tests could not accommodate measurement error.
+- On the consumer side, ignoring ME leas to an over-rejection of the RP of the Utility Maximization Theory (UMT) .small[(Aguiar & Kashaev, 2020)].
+- This result has not been extended to the producer side.
+
+---
+
+- Carvajal et al. (2013) develops a RP test for the Cournot model. 
+- Using data from *Monthly Energy Review* on oil-producing countries, the authors reject the Cournot Hypothesis.
+- However, in this setting, ME in quantities could arise from:
+  - Consolidation process
+  - Coordination mistakes
+
+---
+layout: false
+
+### Roadmap
+
+1. Define deterministic RP test
+1. Define Stochastic Cournot Rationalizability (SCR) and its corresponding stochastic RP test
+1. Introduce ME and centering condition
+1. Cast the empirical content of the SCR into a set of moment conditions
+1. Redefine SCR in terms of the maximum-entropy moment (MEM) to use ELVIS
+1. Define test statistic with the sample analogues of the MEM
+
+---
+
+
+### The Cournot RP deterministic test
+
+- Consider an industry consisting with $I$ firms, $\mathcal I= \{1,2,..., I\}$. 
+- The data set $\mathcal O$ consists of $T$ observations indexed by $t\in \mathcal T =\{1,2,...,T\}$. 
+- The econometrician observes the output of each firm, $q_{it}\in\mathbb R_+$ and the price $p_t\in \mathbb R_{++}$.
+- One homogeneous good.
+- Firms have convex costs functions that do not vary across observations and 
+- Demand is a downward-sloping function.
+
+---
+### THEOREM 1 .small[(Carvajal et al., 2013)]
+
+>  The following statements are equivalent:
+
+>  A. The data set $\mathcal O = \{p_t, (q_{it})_{i \in \mathcal I} \}_{t\in \mathcal T}$ is *Cournot rationalizable* with convex cost functions.
+
+>  B. There exists a set of non-negative numbers $(\delta_{it})_{(i,t)\in\mathcal{I\times T}}$ that satisfy:
+
+>  i. $\frac{p_t-\delta_{it}}{q_{it}}=\frac{p_t-\delta_{jt}}{q_{jt}}\ge0$ *(common ratio property)*, and
+
+>  ii. $(\delta_{it}-\delta_{is})(q_{it}-q_{is})\ge0$ *(co-monotone property)*
+
+>  for every $t,s\in \mathcal T$, and every $i, j\in \mathcal I$.
+
+---
+### Stochastic Cournot Rationalizability
+
+Let $\mathbf{ p}_t^* \in \mathbf P_t \subseteq \mathbb R_{++}^L$ and $\mathbf{ q}_t^* \in \mathbf Q_t \subseteq \mathbb R_{+}^L \setminus \{0\}$ denote random vectors of true prices and true quantities at time $t$, respectively.
+
+### Measurement Error
+
+*Measurement error*, $\mathbf{w}=(\mathbf{w}_t)_{t\in\mathcal T}\in W$, is the difference between the observed random variables and their true values. 
+
+\begin{equation}
+  \mathbf{w}=\left( 
+    \begin{array}{c}
+      \mathbf{w}^q_t \\
+      \mathbf{w}^p_t
+    \end{array}
+  \right) =
+  \left(
+    \begin{array}{c}
+      \mathbf{q}_t-\mathbf{q}_t^* \\
+      \mathbf{p}_t-\mathbf{p}_t^*
+      \end{array}
+  \right), \quad \forall t \in \mathcal T \notag
+\end{equation}
+
+---
+>  **DEF**: A random array $\{(\mathbf{q}_{it}^*)_{i\in\mathcal I},\mathbf{p}_t^*\}_{t\in\mathcal T}$ is **stochastic Cournot rationalizable (SCR)** if there exists a tuple $\left(\mathbf c, (\mathbf{\lambda}_t)_{t\in\mathcal T}\right)$, such that:
+
+>  1. $\mathbf c$ is a random, continuous, and convex cost function;
+
+>  2. $\mathbf{c'}(\mathbf{q}_{it}^*)-\lambda_{t}[\mathbf{q}_{it}^*\nabla \mathbf{p}(\mathbf{q}_{t}^*)+\mathbf{p}(\mathbf{q}_t^*)]\le0$ a.s. for every $i\in\mathcal I$ and every $t\in\mathcal T$;
+
+>  3. $(\lambda_t)_{t\in\mathcal T}$ is a positive random vector supported on or inside a known set $\Delta \subseteq\mathbb R_{++}^{|\mathcal T|}$, $\nabla \mathbf{p}(\mathbf{q}_t^*)$ is a random negative number, and $\mathbf{p}(\mathbf{q}_t^*)=\mathbf{p}_t^*$ for all $t\in\mathcal T$;
+
+>  4. For every $i\in \mathcal I$ and $t\in \mathcal T$, it must be the case that
+
+>  $$\mathbb P\left(\mathbf{q}_{it}^*\not=0, \mathbf{c'}(\mathbf{q}_{it}^*)-\lambda_{t}[\mathbf{q}_{it}^*\nabla \mathbf{p}(\mathbf{q}_{t}^*)+\mathbf{p}(\mathbf{q}_t^*)]<0\right)=0.$$
+
+
+---
+
+### Lemma 
+
+>  The following statements are equivalent:
+
+>  1. The random array $\{(\mathbf{q}_{it}^*)_{i\in\mathcal I},\mathbf{p}_t^*\}_{t\in\mathcal T}$ is *stochastic Cournot rationalizable (SCR)*.
+
+>  2. There exists nonnegative random vectors $(\delta_{it})_{(i,t)\in\mathcal{I\times T}}$ that satisfy:
+
+>  i. $\frac{\mathbf{p}^*_t-\delta_{it}}{\mathbf{q}^*_{it}}=\frac{\mathbf{p}^*_t-\delta_{jt}}{\mathbf{q}^*_{jt}}\ge0$  *(common ratio property)*, and
+
+>  ii. $(\delta_{it}-\delta_{is})(\mathbf{q}^*_{it}-\mathbf{q}^*_{is})\ge0$ *(co-monotone property)*
+
+>  a.s., $\forall t,s\in \mathcal T$, and every $i, j\in \mathcal I$.
+
+
+---
+layout: true
+
+### Characterization by moment conditions
+
+---
+
+- We can summarize the empirical content of the SCR by a set of moment conditions. 
+- Let $\mathbf e=(\delta,\mathbf{w})'\in E|X$ denote the vector of random latent variables and
+- $\mathbf{x}=(\mathbf{q},\mathbf{p})'$ the vector of observed random variables. 
+- Moreover, let $\mathcal{P}_X$, $\mathcal{P}_{E,X}$, and $\mathcal{P}_{E|X}$ denote the set of all probability measures defined over the support of $\mathbf{x}$,($\mathbf{e},\mathbf{x}$), and $\mathbf{e}|\mathbf{x}$, respectively. 
+
+---
+
+Define the following moment conditions:
+
+$$\begin{aligned}
+g_M(\mathbf{x},\mathbf{e})&=\mathbf{p}'_{t}\mathbf{w}^q_{t}, \\
+g_{R}(\mathbf{x},\mathbf{e})&= \mathbb 1 \left[ \frac{\mathbf{p}_t-\delta_{it}}{\mathbf{q}_{it}-\mathbf{w}^q_{it}}=\frac{\mathbf{p}_t-\delta_{jt}}{\mathbf{q}_{jt}-\mathbf{w}^q_{jt}}\ge0\right]-1, \\
+g_{C}(\mathbf{x},\mathbf{e})&= \mathbb 1 \left[(\delta_{it}-\delta_{is})(\mathbf{q}_{it}-\mathbf{w}^q_{it}-\mathbf{q}_{is}+\mathbf{w}^q_{is})\ge0\right]-1,\\
+\forall i\not=j \in \mathcal I, t\not=s \in \mathcal T \notag
+\end{aligned}$$
+
+---
+
+Define $\mathbb E_{\mu\times\pi}[g(\mathbf x, \mathbf e)]=\int_X \int_{E|X} g(x.e)d_\mu d_\pi$, where $\mu\in \mathcal{P}_{E|X}$ and $\pi\in \mathcal{P}_{X}$, and $g(\mathbf{x},\mathbf{e})=(g_M(\mathbf{x},\mathbf{e})',g_R(\mathbf{x},\mathbf{e})',g_{C}(\mathbf{x})')'$.
+
+#### Theorem 
+>  A random vector $\mathbf{x}=(\mathbf{p}_t,\mathbf{q}_t)_{t\in\mathcal T}$ is approximately **stochastic Cournot rationalizable (SCR)** iff
+
+> $$\inf_{\mu\in\mathcal P_{E|X}} \|\mathbb E_{\mu\times\pi_0}[g(\mathbf{x},\mathbf{e})] \| =0$$
+
+>  where $\pi_0\in \mathcal P_X$ is the observed distribution of $\mathbf x$.
+
+
+---
+layout: true
+### Using ELVIS 
+
+---
+
+- We can solve the problem of having a latent random set of variables $\mathbf e$ with unknown $\mu\in\mathcal P_{E|X}$ using the Entropic Latent Variable Integration via Simulation (ELVIS) .small[(Schennach, 2014)]. 
+- Intuitively, there might be many possible conditional distributions $\mu\in\mathcal P_{E|X}$ of the latent variables that satisfy the moment conditions. 
+- ELVIS ranks them by entropy and selects the *least favourable*, thus, converting an *existence* problem into an optimization problem. 
+
+---
+
+1. Define a maximum-entropy moment, $h(x;\gamma)$, as the marginal moment of the function $g$ at which the latent variable has been integrated out. 
+1. This maximum-entropy moment requires an arbitrary user-defined distribution $\eta\in \mathcal P_{E|X}$ that needs to comply with certain characteristics, but it does not affect the set of values that $\mathbb E_{\pi_0}[h(\mathbf x;\cdot)]$ can take. 
+1. Finally, we can state the necessary and sufficient conditions to be approximately SCR in terms of the maximum-entropy moment, $\tilde h(x;\gamma)$, with distribution $d\tilde \eta(\cdot|x)=\mathbb 1(g_R(x,\cdot)=0)\mathbb 1 (g_C(x,\cdot)=0)d\eta(\cdot|x)$.
+
+---
+
+- In practice, we need to use Markov Chain Monte Carlo (MCMC) methods to compute $\tilde h(x;\gamma)$ by sampling from $\eta$ and reject if the draw if it does not satisfy $\mathbb 1(g_R(x,\cdot)=0)\mathbb 1 (g_C(x,\cdot)=0)$. 
+- In the application, I used a hit-and-run algorithm adapted from Aguiar & Kashaev (2020) to sample directly from $\tilde \eta$.
+
+---
+layout: true
+### Test statistic
+
+---
+
+\begin{equation}
+  TS_n=T \inf_{\gamma\in\mathbb R^q} \hat{\tilde{h}}_M(\gamma)'\hat{\tilde{\Omega}}^{-1}\hat{\tilde{ h}}_M(\gamma)
+\end{equation}
+
+where $\hat{\tilde{ h}}_M(\gamma)$ and $\hat{\tilde{\Omega}}$ are the sample analogues of the maximum-entropy moment and its variance, defined as:
+
+$$\begin{aligned}
+  \hat{\tilde{h}}_M(\gamma)&=\frac{1}{T}\sum_{i=1}^{n}\tilde h_M(\mathbf x;\gamma) \\
+  \hat{\tilde{\Omega}} (\gamma)&=\frac{1}{T}\sum_{i=1}^{n}\tilde h_M(\mathbf x;\gamma)\tilde h_M(\mathbf x;\gamma)'-\tilde h_M(\gamma)\tilde h_M(\gamma)'
+\end{aligned}$$
+
+---
+
+Under the null hypothesis that the data is approximately consistent with SCR, then:
+
+\begin{equation}
+  \lim_{n\rightarrow\infty} \mathbb P \left( TS_n > \chi_{q,1-\alpha}^{2} \right)\le\alpha .\notag
+\end{equation}
+
+---
+layout: false
+### Application
+
+- Data from .small[Carvajal et al. (2013)], two sources: the *Monthly Energy Review* (MER), published by the U.S. Energy Information Administration, and the St. Louis Federal Reserve.  
+- MER provides a series of monthly crude oil production in thousands of barrels per day by 12 OPEC members and 7 nonmembers
+- The data covers January 1973 to April 2009.
+
+---
+
+### Results
+
+```{r t1, warning=FALSE, message=FALSE}
+
+joint <- readr::read_csv(paste0(mypath,"/joint_sem.csv"), na = "", quoted_na = TRUE)
+decade <- readr::read_csv(paste0(mypath,"/decade_sem.csv"), na = "", quoted_na = TRUE)
+t3 <- rbind(joint, decade)
+t3$Period <- c("1973-2008", "1973-1980","1981-1990","1991-2000","2001-2008")
+
+t3 <- t3 %>% replace_na(list(stars=""))
+kable(t3[,c(4,1,2,3)], digits = c(0, 2,4, 0),
+      col.names = c("Period","\\(TS_n\\)","\\(p\\) value",""),
+      escape = F, booktabs = T,
+      caption = "\\(TS_n\\) statistic and p-values for the six major oil producers") %>% 
+  kable_styling() %>% 
+  footnote(general="The six producers are Saudi Arabia, U.S.A, Iran, China, Mexico and Venezuela. Countries are assumed to play semiannual independent games.",
+           threeparttable = T, escape = F, fixed_small_size = T)
+  
+```
+
+---
+
+### Discussion and future work
+
+1. MC simulations to check if test has any bite
+1. Better demand estimates
+1. Bertrand and product differentiation
+1. Reformulate using profit function
+1. Reformulate using production function
+
+---
+
+### Conclusions
+
+- I develop a stochastic RP test for the Cournot model that accounts for ME. 
+- The test builds on .small[Carvajal et al. (2013)] and uses recently developed techniques first by .small[Schennach (2014)] and then applied in the consumer case to test the UMT by .small[Aguiar & Kashaev (2020)]. 
+- Using data from .small[Carvajal et al. (2013)] on the major oil-producing countries, we can no longer reject the Cournot hypothesis at the 5 % significance level. 
+- Consequently, as in .small[Aguiar & Kashaev (2020)]; ignoring measurement error leads to an over-rejection of the RP tests.
+
+---
+layout: false
+class: center, middle
+
+# END

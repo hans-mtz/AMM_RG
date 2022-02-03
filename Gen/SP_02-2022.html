@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Cournot rationalizability and measurement error</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Hans Martinez" />
+    <script src="SP_02-2022_files/header-attrs/header-attrs.js"></script>
+    <script src="SP_02-2022_files/kePrint/kePrint.js"></script>
+    <link href="SP_02-2022_files/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Cournot rationalizability and measurement error
+### Hans Martinez
+### Feb 02, 2022
+
+---
+
+
+
+
+
+
+
+
+### Overview
+
+- **What’s the question?**: Do the observed prices and quantities arise as an equilibrium of the Cournot model when quantities are mismeasured?
+- **Why does it matter?**: Measurement Error (ME) is ubiquitous. Ignoring ME leads to an over-rejection of the Revealed Preference (RP) deterministic test. .small[(Aguiar &amp; Kashaev, 2020)].
+- **How do I do it?**: I design a stochastic test of the Cournot model by introducing ME to Carvajal et al. (.small[*ECTA*, 2013]). I use *Entropic Latent Variable Integration via Simulation* (ELVIS) .small[(Schennach, 2018)] to estimate the test following Aguiar &amp; Kashaev .small[ ( *RESTUD*, 2020)].
+- **What do I find?**: The Cournot hypothesis can no longer be rejected at the 5% significance level once ME in quantities is introduced.
+
+---
+layout: true
+### Introduction
+
+---
+
+- Long-standing question in economics .small[(Afriat, 1967)].
+- In contrast to the parametric efforts, the RP approach relies only on minimal assumptions.
+- Until recently the RP tests could not accommodate measurement error.
+- On the consumer side, ignoring ME leas to an over-rejection of the RP of the Utility Maximization Theory (UMT) .small[(Aguiar &amp; Kashaev, 2020)].
+- This result has not been extended to the producer side.
+
+---
+
+- Carvajal et al. (2013) develops a RP test for the Cournot model. 
+- Using data from *Monthly Energy Review* on oil-producing countries, the authors reject the Cournot Hypothesis.
+- However, in this setting, ME in quantities could arise from:
+  - Consolidation process
+  - Coordination mistakes
+
+---
+layout: false
+
+### Roadmap
+
+1. Define deterministic RP test
+1. Define Stochastic Cournot Rationalizability (SCR) and its corresponding stochastic RP test
+1. Introduce ME and centering condition
+1. Cast the empirical content of the SCR into a set of moment conditions
+1. Redefine SCR in terms of the maximum-entropy moment (MEM) to use ELVIS
+1. Define test statistic with the sample analogues of the MEM
+
+---
+
+
+### The Cournot RP deterministic test
+
+- Consider an industry consisting with `\(I\)` firms, `\(\mathcal I= \{1,2,..., I\}\)`. 
+- The data set `\(\mathcal O\)` consists of `\(T\)` observations indexed by `\(t\in \mathcal T =\{1,2,...,T\}\)`. 
+- The econometrician observes the output of each firm, `\(q_{it}\in\mathbb R_+\)` and the price `\(p_t\in \mathbb R_{++}\)`.
+- One homogeneous good.
+- Firms have convex costs functions that do not vary across observations and 
+- Demand is a downward-sloping function.
+
+---
+### THEOREM 1 .small[(Carvajal et al., 2013)]
+
+&gt;  The following statements are equivalent:
+
+&gt;  A. The data set `\(\mathcal O = \{p_t, (q_{it})_{i \in \mathcal I} \}_{t\in \mathcal T}\)` is *Cournot rationalizable* with convex cost functions.
+
+&gt;  B. There exists a set of non-negative numbers `\((\delta_{it})_{(i,t)\in\mathcal{I\times T}}\)` that satisfy:
+
+&gt;  i. `\(\frac{p_t-\delta_{it}}{q_{it}}=\frac{p_t-\delta_{jt}}{q_{jt}}\ge0\)` *(common ratio property)*, and
+
+&gt;  ii. `\((\delta_{it}-\delta_{is})(q_{it}-q_{is})\ge0\)` *(co-monotone property)*
+
+&gt;  for every `\(t,s\in \mathcal T\)`, and every `\(i, j\in \mathcal I\)`.
+
+---
+### Stochastic Cournot Rationalizability
+
+Let `\(\mathbf{ p}_t^* \in \mathbf P_t \subseteq \mathbb R_{++}^L\)` and `\(\mathbf{ q}_t^* \in \mathbf Q_t \subseteq \mathbb R_{+}^L \setminus \{0\}\)` denote random vectors of true prices and true quantities at time `\(t\)`, respectively.
+
+### Measurement Error
+
+*Measurement error*, `\(\mathbf{w}=(\mathbf{w}_t)_{t\in\mathcal T}\in W\)`, is the difference between the observed random variables and their true values. 
+
+`\begin{equation}
+  \mathbf{w}=\left( 
+    \begin{array}{c}
+      \mathbf{w}^q_t \\
+      \mathbf{w}^p_t
+    \end{array}
+  \right) =
+  \left(
+    \begin{array}{c}
+      \mathbf{q}_t-\mathbf{q}_t^* \\
+      \mathbf{p}_t-\mathbf{p}_t^*
+      \end{array}
+  \right), \quad \forall t \in \mathcal T \notag
+\end{equation}`
+
+---
+&gt;  **DEF**: A random array `\(\{(\mathbf{q}_{it}^*)_{i\in\mathcal I},\mathbf{p}_t^*\}_{t\in\mathcal T}\)` is **stochastic Cournot rationalizable (SCR)** if there exists a tuple `\(\left(\mathbf c, (\mathbf{\lambda}_t)_{t\in\mathcal T}\right)\)`, such that:
+
+&gt;  1. `\(\mathbf c\)` is a random, continuous, and convex cost function;
+
+&gt;  2. `\(\mathbf{c'}(\mathbf{q}_{it}^*)-\lambda_{t}[\mathbf{q}_{it}^*\nabla \mathbf{p}(\mathbf{q}_{t}^*)+\mathbf{p}(\mathbf{q}_t^*)]\le0\)` a.s. for every `\(i\in\mathcal I\)` and every `\(t\in\mathcal T\)`;
+
+&gt;  3. `\((\lambda_t)_{t\in\mathcal T}\)` is a positive random vector supported on or inside a known set `\(\Delta \subseteq\mathbb R_{++}^{|\mathcal T|}\)`, `\(\nabla \mathbf{p}(\mathbf{q}_t^*)\)` is a random negative number, and `\(\mathbf{p}(\mathbf{q}_t^*)=\mathbf{p}_t^*\)` for all `\(t\in\mathcal T\)`;
+
+&gt;  4. For every `\(i\in \mathcal I\)` and `\(t\in \mathcal T\)`, it must be the case that
+
+&gt;  `$$\mathbb P\left(\mathbf{q}_{it}^*\not=0, \mathbf{c'}(\mathbf{q}_{it}^*)-\lambda_{t}[\mathbf{q}_{it}^*\nabla \mathbf{p}(\mathbf{q}_{t}^*)+\mathbf{p}(\mathbf{q}_t^*)]&lt;0\right)=0.$$`
+
+
+---
+
+### Lemma 
+
+&gt;  The following statements are equivalent:
+
+&gt;  1. The random array `\(\{(\mathbf{q}_{it}^*)_{i\in\mathcal I},\mathbf{p}_t^*\}_{t\in\mathcal T}\)` is *stochastic Cournot rationalizable (SCR)*.
+
+&gt;  2. There exists nonnegative random vectors `\((\delta_{it})_{(i,t)\in\mathcal{I\times T}}\)` that satisfy:
+
+&gt;  i. `\(\frac{\mathbf{p}^*_t-\delta_{it}}{\mathbf{q}^*_{it}}=\frac{\mathbf{p}^*_t-\delta_{jt}}{\mathbf{q}^*_{jt}}\ge0\)`  *(common ratio property)*, and
+
+&gt;  ii. `\((\delta_{it}-\delta_{is})(\mathbf{q}^*_{it}-\mathbf{q}^*_{is})\ge0\)` *(co-monotone property)*
+
+&gt;  a.s., `\(\forall t,s\in \mathcal T\)`, and every `\(i, j\in \mathcal I\)`.
+
+
+---
+layout: true
+
+### Characterization by moment conditions
+
+---
+
+- We can summarize the empirical content of the SCR by a set of moment conditions. 
+- Let `\(\mathbf e=(\delta,\mathbf{w})'\in E|X\)` denote the vector of random latent variables and
+- `\(\mathbf{x}=(\mathbf{q},\mathbf{p})'\)` the vector of observed random variables. 
+- Moreover, let `\(\mathcal{P}_X\)`, `\(\mathcal{P}_{E,X}\)`, and `\(\mathcal{P}_{E|X}\)` denote the set of all probability measures defined over the support of `\(\mathbf{x}\)`,($\mathbf{e},\mathbf{x}$), and `\(\mathbf{e}|\mathbf{x}\)`, respectively. 
+
+---
+
+Define the following moment conditions:
+
+`$$\begin{aligned}
+g_M(\mathbf{x},\mathbf{e})&amp;=\mathbf{p}'_{t}\mathbf{w}^q_{t}, \\
+g_{R}(\mathbf{x},\mathbf{e})&amp;= \mathbb 1 \left[ \frac{\mathbf{p}_t-\delta_{it}}{\mathbf{q}_{it}-\mathbf{w}^q_{it}}=\frac{\mathbf{p}_t-\delta_{jt}}{\mathbf{q}_{jt}-\mathbf{w}^q_{jt}}\ge0\right]-1, \\
+g_{C}(\mathbf{x},\mathbf{e})&amp;= \mathbb 1 \left[(\delta_{it}-\delta_{is})(\mathbf{q}_{it}-\mathbf{w}^q_{it}-\mathbf{q}_{is}+\mathbf{w}^q_{is})\ge0\right]-1,\\
+\forall i\not=j \in \mathcal I, t\not=s \in \mathcal T \notag
+\end{aligned}$$`
+
+---
+
+Define `\(\mathbb E_{\mu\times\pi}[g(\mathbf x, \mathbf e)]=\int_X \int_{E|X} g(x.e)d_\mu d_\pi\)`, where `\(\mu\in \mathcal{P}_{E|X}\)` and `\(\pi\in \mathcal{P}_{X}\)`, and `\(g(\mathbf{x},\mathbf{e})=(g_M(\mathbf{x},\mathbf{e})',g_R(\mathbf{x},\mathbf{e})',g_{C}(\mathbf{x})')'\)`.
+
+#### Theorem 
+&gt;  A random vector `\(\mathbf{x}=(\mathbf{p}_t,\mathbf{q}_t)_{t\in\mathcal T}\)` is approximately **stochastic Cournot rationalizable (SCR)** iff
+
+&gt; `$$\inf_{\mu\in\mathcal P_{E|X}} \|\mathbb E_{\mu\times\pi_0}[g(\mathbf{x},\mathbf{e})] \| =0$$`
+
+&gt;  where `\(\pi_0\in \mathcal P_X\)` is the observed distribution of `\(\mathbf x\)`.
+
+
+---
+layout: true
+### Using ELVIS 
+
+---
+
+- We can solve the problem of having a latent random set of variables `\(\mathbf e\)` with unknown `\(\mu\in\mathcal P_{E|X}\)` using the Entropic Latent Variable Integration via Simulation (ELVIS) .small[(Schennach, 2014)]. 
+- Intuitively, there might be many possible conditional distributions `\(\mu\in\mathcal P_{E|X}\)` of the latent variables that satisfy the moment conditions. 
+- ELVIS ranks them by entropy and selects the *least favourable*, thus, converting an *existence* problem into an optimization problem. 
+
+---
+
+1. Define a maximum-entropy moment, `\(h(x;\gamma)\)`, as the marginal moment of the function `\(g\)` at which the latent variable has been integrated out. 
+1. This maximum-entropy moment requires an arbitrary user-defined distribution `\(\eta\in \mathcal P_{E|X}\)` that needs to comply with certain characteristics, but it does not affect the set of values that `\(\mathbb E_{\pi_0}[h(\mathbf x;\cdot)]\)` can take. 
+1. Finally, we can state the necessary and sufficient conditions to be approximately SCR in terms of the maximum-entropy moment, `\(\tilde h(x;\gamma)\)`, with distribution `\(d\tilde \eta(\cdot|x)=\mathbb 1(g_R(x,\cdot)=0)\mathbb 1 (g_C(x,\cdot)=0)d\eta(\cdot|x)\)`.
+
+---
+
+- In practice, we need to use Markov Chain Monte Carlo (MCMC) methods to compute `\(\tilde h(x;\gamma)\)` by sampling from `\(\eta\)` and reject if the draw if it does not satisfy `\(\mathbb 1(g_R(x,\cdot)=0)\mathbb 1 (g_C(x,\cdot)=0)\)`. 
+- In the application, I used a hit-and-run algorithm adapted from Aguiar &amp; Kashaev (2020) to sample directly from `\(\tilde \eta\)`.
+
+---
+layout: true
+### Test statistic
+
+---
+
+`\begin{equation}
+  TS_n=T \inf_{\gamma\in\mathbb R^q} \hat{\tilde{h}}_M(\gamma)'\hat{\tilde{\Omega}}^{-1}\hat{\tilde{ h}}_M(\gamma)
+\end{equation}`
+
+where `\(\hat{\tilde{ h}}_M(\gamma)\)` and `\(\hat{\tilde{\Omega}}\)` are the sample analogues of the maximum-entropy moment and its variance, defined as:
+
+`$$\begin{aligned}
+  \hat{\tilde{h}}_M(\gamma)&amp;=\frac{1}{T}\sum_{i=1}^{n}\tilde h_M(\mathbf x;\gamma) \\
+  \hat{\tilde{\Omega}} (\gamma)&amp;=\frac{1}{T}\sum_{i=1}^{n}\tilde h_M(\mathbf x;\gamma)\tilde h_M(\mathbf x;\gamma)'-\tilde h_M(\gamma)\tilde h_M(\gamma)'
+\end{aligned}$$`
+
+---
+
+Under the null hypothesis that the data is approximately consistent with SCR, then:
+
+`\begin{equation}
+  \lim_{n\rightarrow\infty} \mathbb P \left( TS_n &gt; \chi_{q,1-\alpha}^{2} \right)\le\alpha .\notag
+\end{equation}`
+
+---
+layout: false
+### Application
+
+- Data from .small[Carvajal et al. (2013)], two sources: the *Monthly Energy Review* (MER), published by the U.S. Energy Information Administration, and the St. Louis Federal Reserve.  
+- MER provides a series of monthly crude oil production in thousands of barrels per day by 12 OPEC members and 7 nonmembers
+- The data covers January 1973 to April 2009.
+
+---
+
+### Results
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;border-bottom: 0;"&gt;
+&lt;caption&gt;\(TS_n\) statistic and p-values for the six major oil producers&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Period &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; \(TS_n\) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; \(p\) value &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt;  &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1973-2008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.90 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9890 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1973-1980 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9920 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1981-1990 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.68 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9469 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1991-2000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.66 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8502 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2001-2008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4.27 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6400 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;&lt;span style="font-style: italic;"&gt;Note: &lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; The six producers are Saudi Arabia, U.S.A, Iran, China, Mexico and Venezuela. Countries are assumed to play semiannual independent games.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+
+---
+
+### Discussion and future work
+
+1. MC simulations to check if test has any bite
+1. Better demand estimates
+1. Bertrand and product differentiation
+1. Reformulate using profit function
+1. Reformulate using production function
+
+---
+
+### Conclusions
+
+- I develop a stochastic RP test for the Cournot model that accounts for ME. 
+- The test builds on .small[Carvajal et al. (2013)] and uses recently developed techniques first by .small[Schennach (2014)] and then applied in the consumer case to test the UMT by .small[Aguiar &amp; Kashaev (2020)]. 
+- Using data from .small[Carvajal et al. (2013)] on the major oil-producing countries, we can no longer reject the Cournot hypothesis at the 5 % significance level. 
+- Consequently, as in .small[Aguiar &amp; Kashaev (2020)]; ignoring measurement error leads to an over-rejection of the RP tests.
+
+---
+layout: false
+class: center, middle
+
+# END
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
