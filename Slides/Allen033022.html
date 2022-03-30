@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Mergers in a Model with Complementarity</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ershov, Laliberté &amp; Orr" />
+    <script src="Allen033022_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Mergers in a Model with Complementarity
+### Ershov, Laliberté &amp; Orr
+### Mar 30, 2022
+
+---
+
+
+
+
+
+
+### Overview
+
+- **Question:** How does the presence of demand complementarity in mergers affect price, quantity, and welfare?
+- **Relevance:** Discrete choice models (DCM) used to evaluate mergers assume products are substitutes *ex-ante*. However, ignoring demand complementarity might lead to overstate consumer harm.
+- **Application:** Studying the potato chip and soda pop, the authors estimate a DCM that allows for complement products.    
+- **Contribution:** The authors develop a generalized version of Gentzkow(2007) à la BLP(1995) that allows for complements and provide identification.
+
+---
+name: intro
+### Introduction
+
+- Discrete choice models used in merger analysis assume *ex-ante* that all products are substitutes.
+- However, since complements are priced lower by a monopolist than by a duopolist, ignoring complements might lead to overstate consumer harm.
+- Potato chips and soda pop:
+  1. Likely demand complementarity
+  2. Long history of cross-product mergers and regulatory activity
+  1. Given few supply side complementarities, a fixed constant marginal cost assumption after merger more likely to follow.
+  1. IV: tax-policy experiment in Washington state in 2010: $0.02 per 12 ounces.
+  
+---
+### Minimal context in the lit
+
+- Discrete choice models with market level data: Berry (1994), Berry et al. (1995)
+- Demand complementarity (bundles at consumer level): Gentzkow (2007)
+- Mergers and demand complementarity:
+  1. Song et al. (2017): Pharmaceutical industry with agg. data. A linear pricing restriction on the bundles forces complementarity.
+  1. Bokhari and Mariuzzo (2018): ADHD drugs. Complementarity across drugs by a multistage Almost Ideal Demand System (Deaton and Muellbauer, 1980)
+
+
+---
+### Preliminary results
+
+- Chips and soda are complementary goods.
+
+|  Merger: PepsiCo/Frito-Lay &amp; Dr. Pepper  | Complementarity | No Complementarity |
+|:--:|:--------------: |:------------------:|
+| `\(P_{chips}\)` | `\(\downarrow\)` | `\(=\)`                |
+| `\(P_{soda}\)`  | `\(\uparrow\)` on avg. | `\(\uparrow\)`    |
+|Consumer welfare| `\(\uparrow\)` 16.6 million USD per year on avg. across markets| `\(\downarrow\)` 33.3 million USD per year|
+
+---
+### Preliminary results
+
+|  Break-up: PepsiCo &amp; Frito-Lay| Complementarity | No Complementarity |
+|:--:|:--------------: |:------------------:|
+| `\(P_{chips}\)` | `\(\uparrow\)` | `\(=\)`                |
+| `\(P_{soda}\)`  | `\(\uparrow\)` | `\(=\)`    |
+|Consumer welfare| `\(\downarrow\)` 60 million USD per year on avg. across markets| `\(=\)` |
+
+---
+layout: true
+### Model
+
+---
+
+Consumer `\(i\)` in market `\(t\)` (shopping trip at a particular store), chooses to buy two types of products, chips (C) and soda pop (P).
+
+`\(\Omega_t^{g}\)` set of varieties in each product class `\(g \in (C,P)\)`.
+
+Consumers might choose one variety of chips, one of soda, one of each, or an outside option.
+
+---
+
+Indirect utility of consumer `\(i\)` from buying *one* variety `\(j\)` of product `\(g \in (C,P)\)`:
+
+`$$u_{ijt}^g = \delta_{jt}^g + \mu_{ijt}^g + \epsilon_{ijt}^g$$`
+
+- `\(\delta_{jt}^g\)`: mean utility (constant across consumers)
+- `\(\mu_{ijt}^g\)`: consumer specific deviation from mean utility
+- `\(\epsilon_{ijt}^g\)`: Type I extreme value distributed idiosyncratic taste shock.
+
+Outside option: `\(u_{ijt}^0 = \epsilon_{ijt}^0\)`
+---
+
+Mean utilities are parametrized as:
+
+`$$\delta_{jt}^g \equiv X_{jt}^g\beta^g+\alpha p_{jt}^g+\xi_{jt}^g$$`
+- `\(\xi_{jt}^g\)` characteristics affecting consumer utility observed by consumers and firms but not by econometrician
+- `\(p_{jt}^g\)` price
+- `\(X_{jt}\)` vector or product characteristics
+
+Consumer specific deviations:
+
+`$$\mu_{ijt}^g=X_{jt}^g \beta_{it}^g + \alpha_{it}p_{jt}$$`
+---
+
+The utility of a consumer purchasing a bundle consisting of both a pop type `\(j\)` and chips `\(k\)` is :
+
+`$$u^{PC}_{ijt}=\delta_{jt}^P + \mu_{ijt}^P + \delta_{jt}^C + \mu_{ijt}^C + \Gamma_{jkt} +\epsilon_{ijt}^{PC}$$`
+- `\(\Gamma_{jkt}\)` governs whether consumers obtain higher or lower utility consuming type `\(j\)` and `\(k\)` together.
+
+
+---
+
+The quantity sold of good `\(j\)` at time `\(t\)`, `\(Q_{jt}^g\)`, is given by the total number of consumers `\(M_t\)` times the probability they buy variety `\(j\)` its own plus the probability of buying `\(j\)` in a bundle:
+
+`\begin{equation}
+  Q_{jt}^g=M_t \left(
+    \mathbb{P}_{jt}^g+ \sum_{k\in\Omega^{g'}_t} \mathbb{P}_{jkt}^{gg'}
+  \right)
+\end{equation}`
+
+---
+layout: false
+
+`\begin{equation}
+  = \int_{\gamma_{it}}\frac{
+    \exp(\delta_{jt}^g+\mu_{ijt}^g)+
+    \sum_{k\in \Omega_t^{g'}}\exp(
+      \delta_{jt}^g+\mu_{ijt}^g+\delta_{lt}^{g'}+\mu_{ilt}^{g'}+\Gamma_{jkt})
+  }{
+  \Sigma(\gamma_{it})
+  } dF(\gamma_{it})
+\end{equation}`
+
+`\(\gamma_{it}\equiv(\alpha_{it},\beta_{it}^P,\beta_{it}^C)\)`: vector of consumer specific random coefficients with cdf `\(F(\cdot)\)`
+
+`\begin{multline}
+  \Sigma(\gamma_{it})=1+\sum_{j\in\Omega_t^P} \exp(\delta_{jt}^P+\mu_{ijt}^P)+
+    \sum_{j\in\Omega_t^C} \exp(\delta_{jt}^C+\mu_{ijt}^C)+ \\
+    \sum_{j\in\Omega_t^C} \sum_{j\in\Omega_t^P} \exp(\delta_{jt}^P+\mu_{ijt}^P+
+      \delta_{jt}^C+\mu_{ijt}^C + \Gamma_{jkt})
+\end{multline}`
+
+
+---
+layout: false
+
+In Gentzkow(2007): single type of each product, the sign of `\(\Gamma_{jkt}\)` defines complementarity of substitutability. 
+
+With with multi-variety, if the mean valuation of bundles does not differ by variety , `\(\Gamma_{jkt}=\Gamma_t \forall j,k\)`,
+
+`\begin{equation}
+  \frac{\partial Q_{jt}^g}{\partial p_{kt}^{g'}}=M_t \int_{\gamma_{it}}\alpha_{it}  \frac{
+    \exp(\delta_{jt}^g+\mu_{ijt}^g+\delta_{kt}^{g'}+\mu_{ikt}^{g'})
+  }{
+    \left(\Sigma(\gamma_{it}) \right)^2
+  }
+  (1-\exp(\Gamma_t))dF(\gamma_{it})
+\end{equation}`
+
+- `\(\Gamma_t &lt;0 \implies \frac{ \partial Q_{jt}^g}{ \partial p_{kt}^{g'}} &gt;0\)`: Substitutes
+- `\(\Gamma_t &gt;0 \implies \frac{ \partial Q_{jt}^g}{ \partial p_{kt}^{g'}} &lt;0\)`: Complements
+- `\(\Gamma_t =0 \implies \frac{ \partial Q_{jt}^g}{ \partial p_{kt}^{g'}} =0\)`: Independent
+---
+### Supply
+
+Firms own multiple brands of chips and soda pop and compete in prices à la Bertrand-Nash. Each firm `\(b\)` produces a mutually exclusive subset of chips `\(F_b^C\)` and pop `\(F_b^P\)`.
+
+`$$\Pi_{bt}=\sum_{j\in F_b^P} (p_{jt}^P-mc_{jt}^P)Q^P_{jt}(\mathbf{p}_t)+\sum_{k\in F_b^C} (p_{kt}^C-mc_{kt}^C)Q^C_{kt}(\mathbf{p}_t)$$`
+&gt; Difference: Demand for soda `\(j\)` could also depend on the prices of chips.
+
+---
+### Supply 
+
+FOC, stacking, and in vector notation
+
+$$\mathbf{Q}(\mathbf{p}_t)-\Lambda_t(\mathbf{p}_t-\mathbf{mc}_t)=0 $$
+
+`\(\Lambda_t\)` is a `\((J^P_t+J^C_t)\times(J^P_t+J^C_t)\)` matrix of derivatives of sales with respect prices multiplied by an ownership matrix (describing which manufactures produces which product).
+
+Allows to:
+1. Recover `\(mc\)`
+1. Run counterfactual market outcomes by changing the ownership matrix
+
+---
+layout:true
+### Estimation
+
+---
+
+**Challenges:** 
+1. Large choice sets (812 varieties of pop and chips) 
+2. Price endogeneity (No price variation in Gentzkow (2007))
+
+**Price endogeneity:** Berry (1994), Berry et al. (1995) use observed **market shares** to solve for demand shocks that rationalize data. However, the primitives of this model require **bundles purchases** `\(\implies\)` market shares should come from data on individual consumer purchases.
+
+**Problem:** The Nielsen Consumer Panel data contains bundles info but a small sample of consumers. Can't recover market shares from it.
+
+---
+
+Alternatively, market-share inversion using **agg. data**.
+
+**Problem:** Aggregate market shares are no longer proportional to individual variety choice probabilities, it now includes bundle specific choice probabilities, and thus, not a special case of Berry (1994). Proofs of uniqueness and identification no longer valid.
+
+---
+layout:false
+
+### Estimation assumptions
+
+&gt; Intuitively, use consumer data on bundles to estimate choice probabilities, and then use aggregate data to estimate demand shocks.
+
+Unobserved consumer heterogeneity: `\(\mu_{ijt}^g=\sum_{f\in \mathbb{F}^g_t} \mathbb{I}^{gf}_{jt}\beta^{gf}_{it}\)`
+
+Generates a simple *nesting structure*, each *nest* consists of the types (varieties) that have the same realizations of `\(\mathbb{I}^{gf}_{jt}\)`.
+
+If the average tastes for bundles do not vary within nest-specific pairs, the mapping between observed nest-specific choice probabilities (*individual level*), within-nest aggregate sales shares, and unobserved mean utilities is **unique**.
+
+---
+
+The probability that a random consumer will buy a product of nest `\(n\)`
+
+`\begin{equation}
+  \mathbb{P}_t^{gn} \equiv \sum_{j\in\Omega_t^{gn}}\mathbb{P}_{jt}^g =
+    \int_{\mu_{it}}\frac{
+      \exp(I_t^{gn}+\mu_{it}^{gn})
+    }{
+      \Sigma(\mu_{it})
+    }dF(\theta;\mu_{it}) \approx s_t^{gn}
+\end{equation}`
+
+`\(\Omega_t^{gn}\)` the set of varieties belonging to nest `\(n\in\mathbb{N}^g_t\)`. `\(\mathbb{N}^g_t\)` set of unique realizations of `\(\mathbb{I}^{gf}_{jt}\)`.
+
+`\(\mu_{it}^{gn}\)` is the constant  nest specific random coefficients of nest `\(n\in\mathbb{N}^g_t\)`. Since a nest corresponds to unique realizations of `\(\mathbb{I}^{gf}_{jt}\)`.
+
+`\begin{equation}
+  I_t^{gn}\equiv \ln\left(
+      \sum_{j\in\Omega_t^{gn}} \exp(\delta_{jt}^{gn})
+  \right)
+\end{equation}`
+
+---
+layout:true
+### Estimation
+
+---
+
+`\begin{multline}
+  \Sigma(\gamma_{it})=1+\sum_{n\in\mathbb{N}_t^P} \exp(I_{t}^{Pn}+\mu_{it}^{Pn})+
+    \sum_{n\in\mathbb{N}_t^C} \exp(I_{t}^{Cn}+\mu_{it}^{Cn})+\\
+    \sum_{n\in\mathbb{N}_t^P} \sum_{n\in\mathbb{N}_t^C} \exp(I_{t}^{Pn}+\mu_{it}^{Pn}+
+      I_{t}^{Cm}+\mu_{it}^{Cm} + \Gamma_{t}^{nm})
+\end{multline}`
+
+---
+
+The probability of buying a bundle with both pop nest `\(n\)` and chips nest `\(m\)`
+
+`\begin{multline}
+  \mathbb{P}_t^{PnCm} \equiv \sum_{j\in\Omega_t^{Pn}}\sum_{k\in\Omega_t^{Cm}}
+    \mathbb{P}_{jkt}^{PC} \\=
+    \int_{\mu_{it}}\frac{
+      \exp(I_t^{Pn}+\mu_{it}^{Pn}+
+            I_t^{Cm}+\mu_{it}^{Cm})+
+            \gamma_t^{nm})
+    }{
+      \Sigma(\mu_{it})
+    }dF(\theta;\mu_{it}) \\ \approx s_t^{PnCm}
+\end{multline}`
+
+&gt; These equations define a canonical random coefficients model where the choice set is product-specific singleton nests and the corresponding bundles.
+
+---
+
+Use BLP (1995) contraction mapping to solve for the fixed point `\(I_t(\theta;s_t)\)`. 
+
+`\(I_t^{gn}\)` and `\(I_t^{PnCm}\)` act as mean utilities. Given a value of `\(\theta\)`, find `\(I_t\)` that makes share equations hold with equality.
+
+`\begin{equation}
+  T(\theta;I_t)=I_t+\ln(s_t)+ln(\hat s(\theta;I_t))
+\end{equation}`
+
+With `\(I_t(\theta;s_t)\)`, we can recover
+
+`$$\Gamma_t^{nm}(\theta;s_t)=I_t(\theta;s_t)^{PnCm}-I_t(\theta;s_t)^{Pn}-I_t(\theta;s_t)^{Cm}$$`
+
+---
+
+Restrictions on unobserved heterogeneity `\(\mu_{ijt}^g\)`, `\(\Gamma_{jkt}=\Gamma_t^{nm}\)`, imply `\(Q_{jt}^{gn}=\)`:
+
+`\begin{equation}
+    M_t \exp(\delta_{jt}^{gn})\int_{\gamma_{it}}\frac{
+    \exp(\mu_{it}^{gn})+
+    \displaystyle\sum_{m\in \mathbb{N}_t^{g'}}\displaystyle\sum_{k\in \Omega_t^{mg'}}
+      \exp(\mu_{it}^{gn}+\delta_{kt}^{g'}+\mu_{kt}^{mg'}+\Gamma_{t}^{nm})
+  }{
+  \Sigma(\mu_{it})
+  } dF(\mu_{it}) 
+\end{equation}`
+
+`\begin{equation}
+  =M_t\exp(\delta_{jt}^{gn}) \Psi_t^{gn}
+\end{equation}`
+
+---
+`\begin{equation}
+  S_{jt|gn}=\frac{Q_{jt}^{gn}}{\sum_{k\in\Omega^{gn}_{kt}}Q_{kt}^{gn}}
+    = \frac{\exp(\delta_{jt}^{gn})}{\sum_{k\in\Omega^{gn}_{kt}}\exp(\delta_{kt}^{gn})}
+    = \frac{\exp(\delta_{jt}^{gn})}{\exp(I_{t}^{gn})}
+\end{equation}`
+
+Use within-nest market shares from aggregate data using `\(I_t^{gn}(\theta;s_t)\)` and `\(\delta_{jt}^{gn}=X_{jt}^{g}\beta^g-\alpha p_{jt}^g+\xi_{jt}^{gn}\)` to solve for `\(\xi_{jt}^{gn}(\theta,\beta,\alpha;S_{j|gn},s_t)\)`.
+
+`\begin{equation}
+  \xi_{jt}^{gn}(\theta,\beta,\alpha;S_{j|gn},s_t=\ln(S_{jt|gn})+I_t^{gn}(\theta;s_t)-X_{jt}^{g}\beta^g+\alpha p_{jt}^g
+\end{equation}`
+
+GMM: Interact `\(\xi_{jt}^{gn}(\theta,\beta,\alpha;S_{j|gn},s_t)\)` with instruments orthogonal to demand shocks.
+
+---
+layout:false
+### Follow-up ideas
+
+Use Allen &amp; Rehbeck (2019) to study complements in mergers?
+  - Aggregate data
+  - Unobserved product characteristics `\(\xi\)`
+    - Account for them
+    - If object of interest is `\(\Lambda\)`, do we need to?
+  - Using changes in taxes/ regulation
+  - Possible industries
+    1. Beer and weed in Canada
+    1. Sugar drinks and sweet snacks in Mexico
+
+
+---
+layout: false
+class: center, middle
+
+# The end
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
