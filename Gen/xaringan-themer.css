@@ -275,9 +275,19 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 /* Extra CSS */
 .small {
   font-size: 80%;
+  color: #4F2683;
 }
 .full-width {
   display: flex;
   width: 100%;
   flex: 1 1 auto;
+}
+.footer {
+  color: #4F2683;
+  position: fixed;
+  top: 95%;
+  left: 0;
+  text-align: left;
+  width: 50%;
+  font-size: 80%;
 }
