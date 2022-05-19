@@ -1,0 +1,201 @@
+---
+title: "Tax evasion and productivity"
+subtitle: ""  
+author: "Hans Martinez"
+date: '`r format(Sys.Date(),"%b %d, %Y")`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%/%total%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+header-includes:
+  - \usepackage{bbm}
+  - \usepackage{eucal}
+  - \usepackage{bm}
+  - \usepackage{amsmath}
+  - \usepackage{amsfont}
+  - \usepackage{longtable}
+  - \usepackage{booktabs}
+  - \newtheorem{definition}{Definition}
+  - \newtheorem{theo}{Theorem}
+  - \newtheorem{lemma}{Lemma}
+  - \usepackage[lite]{mtpro2}
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#4F2683",
+  secondary_color = "#4F2683",
+  inverse_header_color = "#FFFFFF",
+  base_font_size = "30px",
+  title_slide_background_image = "Horizontal_Rev.png",
+  title_slide_background_size = "5% no-repeat",
+  title_slide_background_position = "bottom",
+  extra_css = list(
+  ".small" = list("font-size" = "80%", 
+                  "color" = "#4F2683"),
+  ".full-width" = list(
+    display = "flex",
+    width   = "100%",
+    flex    = "1 1 auto"
+    ),
+  ".footer" = list("color"    = "#4F2683",
+                   "position" = "fixed",
+                   "top"      = "95%",
+                   "left"     = "0",
+                   "text-align"= "left",
+                   "width"    = "50%",
+                   "font-size"= "80%")),
+  header_font_google = google_font("Merriweather", "400","400i","700"),
+  text_font_google   = google_font("Arimo", "400", "400i"),
+  code_font_google   = google_font("IBM Plex Mono")
+)
+```
+
+
+layout: false
+class: inverse center middle
+
+# Tax evasion and productivity in Mexico
+
+---
+layout: true
+
+### Tax evasion and productivity
+
+---
+
+* Firms have incentives to under-report profits to avoid taxes. Productivity estimates are likely to be biased.
+
+* Mexico: Non-detected tax evasion up to $10 billion USD per year .small[(Zumaya et al., 2021)]
+
+
+* Assume firms only over-report expenses in flexible input, $\Pi(x)=PY-\rho X$.
+
+* Consequently, once they over-report and reach zero profits, firms don't have incentives to over-report more, $\Pi(\tilde x)=0$.
+
+---
+
+* **Question**: Can we recover productivity estimates in the presense of measurement error by using a micro-founded IC as location condition?
+
+* **Data**: INEGI-EMIM, Anonymized tax filings (?) .small[(Zumaya et al., 2021)]
+
+* **Approach**: Hu & Schennach (2008), Hu (2021), Hu & Yao (*J. Econom., forthcoming*)
+
+---
+
+$$\begin{aligned}
+  Y&=G(x^*)e^{\omega+\varepsilon} \\
+  X&=X^*+\Delta X(\theta) \\
+  \Delta X(\theta) &= \left \{ \begin{array}{ll}
+    0 & (1-\tau)\Pi(x^*) \ge \Pi(x^*)-\tau\Pi(x)-\kappa Pr(a)-c(\Delta x) \\
+    \mathbf (0,\tilde x] & otherwise
+  \end{array} \right.\\
+  &\text{where }\; \Pi(x)=PY-\rho X \\
+  &\text{and}\; \Pi(\tilde x)=0 \\
+\end{aligned}$$
+
+$\tau$: tax; $\kappa$ cheating fine if the firm is caught by the authority; $Pr(a)$: probability of getting caught if cheating.
+
+---
+
+Can we use a micro-founded IC as location condition? $M[f]=x^*$, where $M[f]\equiv$
+
+$$\begin{aligned}
+  \sup\left \{ v: \int^{v}_{x^*}  \left \{ \tau [\Pi(x^*)-\Pi(x)]-c(||x-x^*||)\right\} f_{X|X^*}(x|x^*) dx \le\kappa Pr(a)  \right\}
+\end{aligned}$$
+
+Problems: 
+  - $c(||x-x^*||)$ is unknown 
+    - $\implies$ different mass for every approximation
+    - function of firm characteristics
+    - convex
+  - $Pr(a)$ could be subjective to the firm
+
+
+---
+layout: true
+### How to estimate?
+
+---
+
+\begin{equation}
+  f(y_{it},x_{it},p_{it})  = \\
+  f(y_{it},x_{it},p_{it},\omega_{it},\omega_{it-1},x^*_{it})= \\
+  f(y_{it}| x^*_{it},\omega_{it})
+  f(p_{it}|x^*_{it},\omega_{it})
+  f(\omega_{it}|\omega_{it-1})
+  f(x_{it}|x^*_{it})
+  f(\omega_{it-1})f(x^*)
+\end{equation}
+
+---
+
+\begin{equation}
+  \color{blue}{f(y_{it}| x^*_{it},\omega_{it})}
+  \color{green}{f(p_{it}|x^*_{it},\omega_{it})}
+  \color{violet}{f(\omega_{it}|\omega_{it-1})}
+  \color{red}{f(x_{it}|x^*_{it})}
+  \color{orange}{f(\omega_{it-1})f(x^*_{it})}
+\end{equation}
+
+  
+\begin{equation}
+    \color{blue}{ y_{it} = g(x^*_{it})+\omega_{it}+\varepsilon^Y_{it}} \\
+  \color{green}{ \ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)=\ln\left(\frac{G_x(x^*_{it})X^*_{it}}{G(x^*_{it})}\right) - \varepsilon^Y_{it}} \\
+  \color{violet}{\omega_{it}=\rho\omega_{it-1}+\varepsilon^\omega_{it}} \\
+  \color{red}{M[f]=x^*} \\
+  \color{orange}{\text{Flexible input assumption.}}
+\end{equation}
+
+---
+In addition:
+
+$$\begin{aligned}P(cheated)=&\hat P(cheated|Audited)\hat P(Audited)+\\
+&P(cheated|Not Audited)\hat P(Not Audited)
+\end{aligned}$$
+
+
+Note that $P(cheated|Not Audited)$ and, consequently, $P(cheated)$ are unobserved.
+
+---
+
+- Hu & Yao (Journal of Econometrics, *forthcoming*) use sieve maximum likelihood estimator (MLE)
+
+- Mix ELVIS and sieve MLE (?)
+
+
+---
+layout: false
+class: center, middle
+
+```{r, fig.cap="Link to slides: Scan me!"}
+library(qrcode)
+qr <- qrcode::qr_code('https://raw.githack.com/hans-mtz/Slides/main/Gen/NK2022.html')
+plot(qr)
+
+```
+
+<!-- .center[Link to slides: Scan me!] -->
+<!-- .footer[ -->
+<!-- ![](stacked.png)] -->
+[hansmartinez.com](hansmartinez.com)
+
