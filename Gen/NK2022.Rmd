@@ -70,6 +70,19 @@ style_duo_accent(
 )
 ```
 
+## Agenda
+
+- Revealed P firms: Acceptance rule
+  - pseudo-code: $log(U) < \gamma'[g(x,e_{jump})-g(x,e_{r-1})]$. 
+  - Actual code twice: 
+    - chain $log (U) < ||g(x,e_{jump})-g(x,e_{r-1}) ||$
+    - Optimization $log(U) < \gamma'[g(x,e_{jump})-g(x,e_{r-1})]$
+  - $\gamma$  
+  
+- Tax evasion
+  - Can we use an IC as location condition?
+
+---
 
 layout: false
 class: inverse center middle
