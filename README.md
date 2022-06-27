@@ -6,7 +6,7 @@ VA: [html](https://rawcdn.githack.com/hans-mtz/Slides/main/VA/SRP_MP.html)
 
 SN: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/SN.html) [TP](https://raw.githack.com/hans-mtz/Slides/main/Gen/SN0122.html)
 
-DR: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/DR.html) [June, 2022](https://raw.githack.com/hans-mtz/Slides/main/Slides/DR-062022.html)
+DR: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/DR.html) [[June, 2022]](https://raw.githack.com/hans-mtz/Slides/main/Slides/DR-062022.html)
 
 DC: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/DC.html)
 
