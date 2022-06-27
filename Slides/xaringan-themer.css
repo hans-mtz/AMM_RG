@@ -277,6 +277,12 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   font-size: 80%;
   color: #4F2683;
 }
+.large {
+  font-size: 150%;
+  color: #4F2683;
+  font-family: var(--header-font-family);
+  font-weight: 600;
+}
 .full-width {
   display: flex;
   width: 100%;

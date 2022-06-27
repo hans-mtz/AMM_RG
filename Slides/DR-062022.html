@@ -32,6 +32,8 @@ class: center, middle, inverse, title-slide
   - Question (enlarge)
   - Interesting and relevant (provide)
   - Feasible (improve)
+  - Expected challenges
+  - Next steps
 
 ---
 
@@ -58,7 +60,7 @@ Bias in productivity measurement due to tax evasion:
 
 ## Clear and original question 
 
-- Can we recover **unbiased** productivity estimates in the presence of systematic misreporting due to tax evasion?
+- Can we recover **unbiased productivity** estimates in the presence of systematic misreporting due to **tax evasion**?
   - at the firm level using a gross-output production function  
   - intermediates, the flexible input
 - what is the **magnitude** of this bias, in particular for developing countries?
@@ -187,7 +189,7 @@ layout: false
 ## Data
 
 - I use anonymized annual tax declarations from a sample of Mexican firms and 
-- Survey data at the establishment level for manufacturing firms in Mexico (EAIM-INEGI) and Colombia (EAM)collected annually. 
+- Survey data at the establishment level for manufacturing firms in Mexico (EAIM-INEGI) and Colombia (EAM) collected annually. 
   - Mexico: No input prices in Mexican data. The tax records cannot be linked to the survey records.
   - Colombia: data on firms does include input prices.
 
@@ -195,7 +197,7 @@ layout: false
 
 &lt;!-- ![](tax_t.png){width="50%"} --&gt;
 
-&lt;img src="tax_t.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tax_t.png" width="75%" style="display: block; margin: auto;" /&gt;
 ---
 
 ![](eaim.png)
@@ -206,7 +208,7 @@ layout: false
 
 ---
 
-.pull-left[ **Exploratory analysis**]
+.pull-left[ .large[Exploratory analysis]]
 
 
 &lt;img src="tax_dens_notrim.png" width="50%" style="display: block; margin: auto;" /&gt;
@@ -222,23 +224,39 @@ layout: true
 
 ---
 
-- Firms might cheat on sales. Focus on business-to-business (B2B) sales firms instead of business-to-consumer (B2C) ones .small[Chile (Pomeranz, 2015)]
-- Firms might cheat on input prices. Possible solution: base case, lower bound for tax evasion bias. For robustness, model cheating on prices
-- Firms might also report losses and use past losses to reduce the tax burden of the current period. Counter-argument: it increases the cheating cost by increasing audit probability. Data shows a high concentration around zero.
+- Firms might cheat on sales. 
+  - Focus on business-to-business (B2B) sales firms instead of business-to-consumer (B2C) ones .small[(Chile; Pomeranz, 2015)]
+- Firms might cheat on input prices. 
+  - Possible solution: base case, lower bound for tax evasion bias. For robustness, model cheating on prices.
+- Firms might also report losses and use past losses to reduce the tax burden of the current period. 
+  - Counter-argument: it increases the cheating cost by increasing audit probability. Data shows a high concentration around zero.
 
 ---
 
-
-
-- No input prices on Mexican data. If firms are price-taking, then a time-dummy can take care of it if firms do not cheat on prices (?)
+- No input prices on Mexican data. 
+  - If firms are price-taking, then a time-dummy can take care of it if firms do not cheat on prices (?)
 - In Mexico, if firms are classified as Small or Medium, they are subject to a lower tax rate.
-- Colombia: what's the tax evasion evidence? .small[(Ortega and Scartascini, 2015; 2018). Also for Ecuador, Chile, Pakistan.] what's the tax scheme? is there data on firms' taxes? .small[Administrative data: Canada, UK, Brazil, Chile, China, Costa Rica, Ecuador, India, Pakistan, Rwanda, Tunisia, and Uganda.]
+- Colombia: 
+  - what's the tax evasion evidence? .small[(Ortega and Scartascini, 2015; 2018). Also for Ecuador, Chile, Pakistan.] 
+  - what's the tax scheme? 
+  - is there data on firms' taxes? .small[Administrative data: Canada, UK, Brazil, Chile, China, Costa Rica, Ecuador, India, Pakistan, Rwanda, Tunisia, and Uganda.]
+
+---
+layout: false
+### Next steps
+
+- Related literature
+- Mexico and Colombia: Tax systems and productivity
+- Chile (?)
+- Exploratory analisys
+- Preliminay parametrized estimates
+- MC experiments
 
 ---
 name: final_slide
 count: false
 layout: false
-class: center middle plain
+class: center middle 
 
 [hansmartinez.com](hansmartinez.com)
 
@@ -248,7 +266,6 @@ class: center middle plain
 
 &lt;!-- .center[Link to slides: Scan me!] --&gt;
 &lt;!-- .footer[ .full-width[Hello there]] --&gt;
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
