@@ -260,13 +260,13 @@ knitr::include_graphics('tax_t.png')
 
 
 ```{r , echo = FALSE, out.width='50%', fig.align='center'}
-knitr::include_graphics('/Volumes/SSD Hans 1/Github/Research_ideas/Tax avoidance verification prod fun/Tax_Avoidance_WP/tax_dens_notrim.png')
+knitr::include_graphics('tax_dens_notrim.png')
 ```
 
 ---
 
 ```{r , echo = FALSE, out.width='50%', fig.align='center'}
-knitr::include_graphics('/Volumes/SSD Hans 1/Github/Research_ideas/Tax avoidance verification prod fun/Tax_Avoidance_WP/tax_dens_over.png')
+knitr::include_graphics('tax_dens_over.png')
 ```
 
 ---
