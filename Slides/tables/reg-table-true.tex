@@ -1,0 +1,18 @@
+\begin{table}[!htbp] \centering \renewcommand*{\arraystretch}{1.1}
+   \caption{Recovering productivity-True inputs}
+   \label{tab:reg-true}\resizebox{0.8\textwidth}{!}{
+\begin{tabular}{r|cccc}
+\toprule
+         & OLS      & IV         & 2SIV       & FOC         \\ \hline
+\beta    & 0.971*** &    0.997*** & 0.423***  &  0.400***   \\
+         &  (0.004) &     (0.001) & (0.138)   &  (3.016e-18) \\ \hline
+       N &     1000 &        1000 &      1000 &        1000 \\
+   $R^2$ &    0.983 &       0.999 & 2.236e-04 &       1.000 \\
+\bottomrule
+\end{tabular}
+}
+\begin{flushleft}
+   \small{Different estimates for the marginal output of input of the production function
+   using the true unobserved values of input.}
+\end{flushleft}
+\end{table}
