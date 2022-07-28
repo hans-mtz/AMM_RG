@@ -142,7 +142,7 @@ a, a > code {
 .title-slide {
   background-color: var(--title-slide-background-color);
   background-image: url("Horizontal_Rev.png");
-  background-size: 5% no-repeat;
+  background-size: 4.5% no-repeat;
   background-position: bottom;
 }
 .title-slide .remark-slide-number {
@@ -278,7 +278,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   color: #4F2683;
 }
 .large {
-  font-size: 150%;
+  font-size: 130%;
   color: #4F2683;
   font-family: var(--header-font-family);
   font-weight: 600;
@@ -296,8 +296,4 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   text-align: left;
   width: 50%;
   font-size: 80%;
-}
-.center {
-  text-align: center;
-  display: block;
 }
