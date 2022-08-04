@@ -2,7 +2,7 @@
 
 AMM_RG: [html](https://rawcdn.githack.com/hans-mtz/Slides/main/prod_fun/prod_fun_html.html)
 
-VA: [html](https://rawcdn.githack.com/hans-mtz/Slides/main/VA/SRP_MP.html)
+VA: [[Aug, 2022]](https://raw.githack.com/hans-mtz/Slides/main/Slides/VA-082022.html) [previous](https://rawcdn.githack.com/hans-mtz/Slides/main/VA/SRP_MP.html)
 
 SN: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/SN.html) [TP](https://raw.githack.com/hans-mtz/Slides/main/Gen/SN0122.html)
 
