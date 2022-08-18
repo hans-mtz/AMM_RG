@@ -18,4 +18,4 @@ Summer paper: [html](https://raw.githack.com/hans-mtz/Slides/main/Gen/SP_05-2022
 
 RA: [html](https://raw.githack.com/hans-mtz/Slides/main/Slides/Allen033022.html)
 
-Prospectus: [[Aug, 2022]](https://raw.githack.com/hans-mtz/Slides/main/Slides/SNDR-08152022.html) [[July, 2022]](https://raw.githack.com/hans-mtz/Slides/main/Slides/SNDR-08052022.html)
+Prospectus: [[Aug, 2022]](https://raw.githack.com/hans-mtz/Slides/main/Slides/SNDR-08152022.html) [[Previous]](https://raw.githack.com/hans-mtz/Slides/main/Slides/SNDR-08052022.html)
