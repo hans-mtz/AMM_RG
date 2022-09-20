@@ -1,4 +1,8 @@
-.title-slide .remark-slide-number {
+
+.inverse .remark-slide-number {
     display: none;
-    count: false;
+}
+
+.last .remark-slide-number {
+display: none;
 }

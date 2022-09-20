@@ -217,7 +217,6 @@ count: false
   - **efficient reallocation** of resources from low- to high-productivity firms .small[(Eslava et al., 2004; Levy, 2018)]
   - **efficient targeting** to improve government tax revenue
 
-
 ---
 layout: false
 count: false
@@ -225,13 +224,16 @@ count: false
 
 1. Derive a method to estimate **productivity** and **tax evasion** &#9989;
    
-2. Implement the method using **data** from developing countries &#9997;
+2. Implement the method using **data** from developing countries &#128221;
 
-3. Contrast the **productivity distribution** with the mismeasured one &#10071;
+3. Contrast the **productivity distribution** with the mismeasured one .small[Magnitude of the bias, dispersion of the distribution, and ranking] &#128679;
    
-4. Compare estimates of **tax evasion** with previous studies &#10071;
+4. Compare estimates of **tax evasion** with previous studies &#128679;
 
-5. Study the **policy** implications &#10071;
+5. Study the **policy** implications &#128679;
+  - **efficient reallocation** of resources from low- to high-productivity firms .small[(Eslava et al., 2004; Levy, 2018)]
+  - **efficient targeting** to improve government tax revenue
+
 
 
 ---
@@ -246,21 +248,20 @@ $\mathcal O = \{Y_{it}, X_{it}, P_{t}\}_{i\in I, t \in T}$
 
 $Y_{it}=G(X^*_{it})e^{\omega_{it}+\varepsilon^Y_{it}}$
 
-- Firms' reported inputs are their true inputs $X^*$ inflated by $e^{\varepsilon^Y_{it}}$ to evade taxes
+- We are also interested in the Markov process of productivity (AR1)
 
-$X_{it}=X^*_{it}e^{\varepsilon^X_{it}}$ with $\varepsilon_{it}^X\ge0$ and $\varepsilon_{it}^X\not\perp X^*$ .small[ [&#9654; microfoundation](#model)]
-
+$\omega_{it}=\delta_0 + \delta_1 \omega_{it-1}+\eta_{it}$
 
 
 ---
 name: bias
-### Productivity bias
+### Tax evasion and the productivity bias
 
-- The difference between
-  
-- the productivity naively estimated in the presence of tax evasion $\tilde\omega_{it}$ and 
+- Firms' reported inputs are their true inputs $X^*$ inflated by $e^{\varepsilon^Y_{it}}$ to evade taxes
 
-- true productivity $\omega_{it}$
+$X_{it}=X^*_{it}e^{\varepsilon^X_{it}}$ with $\varepsilon_{it}^X\ge0$ and $\varepsilon_{it}^X\not\perp X^*$ .small[ [&#9654; microfoundation](#model)]
+
+- Bias: Difference between the naively estimated $\tilde\omega_{it}$ and true productivity $\omega_{it}$
 
 \begin{equation}
  \mathbb{E}[\tilde\omega_{it}|x]-
@@ -269,8 +270,9 @@ name: bias
         \frac{G(X^*_{it})}{G(X^*_{it}e^{\varepsilon^X_{it}})}|x\right] \le 0
 \end{equation}
 
-  By Jensen's inequality and $G(\cdot)$ is monotonically increasing
-
+.center[
+.small[By Jensen's inequality and because *G(X)* is monotonically increasing]
+]
 .footer[ [&#9654; Bias in PF parameters](#prd-bias)]
 
 
@@ -287,7 +289,8 @@ name: id-strat
   
 - Assumptions: .small[[&#9654; Empirical evidence](#evidence)]
   - (A-1) Firms at the top of the size distribution do not evade by overreporting inputs 
-  - (A-2) Overreporting is chosen after productivity shock is realized and true inputs are chosen but before the current-period shock
+  - (A-2) Overreporting is chosen after productivity shock is realized and true inputs are chosen but before the current-period exogenous shock 
+  .small[ [&#9654; microfoundation](#model)]
 
 
 .footer[[&#9654; Other potential sources of identification](#id-sources)]
@@ -296,6 +299,8 @@ name: id-strat
 layout: false
 name: gnr
 ### GNR
+
+Let $G(X^*_{it})e^{\omega_{it}+\varepsilon^Y_{it}}=X^{*\beta}_{it}e^{\omega_{it}+\varepsilon^Y_{it}}$
 
 1st Stage
 
@@ -352,6 +357,7 @@ Likewise,
 ---
 ### Markov process of productivity
 
+
 I can now recover $\delta=[\delta_0,\delta_1]'$
 
 \begin{align}
@@ -367,14 +373,14 @@ name: deconv
 
 I can get all the moments of the true inputs $X^*_{it}$, productivity $\omega_{it}$, and tax evasion $\varepsilon^X_{it}$ distributions at every $t\in T$
 
-because $Var[\varepsilon^Y_{it}|S_{it}>s]=Var[\varepsilon^Y_{it}|t]=Var[\varepsilon^Y_{it}]$
+because $\mathbb{Var}[\varepsilon^Y_{it}|S_{it}>s]=\mathbb{Var}[\varepsilon^Y_{it}|t]=\mathbb{Var}[\varepsilon^Y_{it}]$ or any other moment
 
 \begin{align}
-  \mathbb{E}[\mathcal E_{it}]&=\mathbb{E}[\varepsilon^X_{it}]-\mathbb{E}[\varepsilon^Y_{it}]\\
-  &=\mathbb{E}[\varepsilon^X_{it}] \\
+  \mathbb{E}[\mathcal E_{it}|t]&=\mathbb{E}[\varepsilon^X_{it}|t]-\mathbb{E}[\varepsilon^Y_{it}]\\
+  &=\mathbb{E}[\varepsilon^X_{it}|t] \\
   \\
-  Var[\mathcal E_{it}]&=Var[\varepsilon^X_{it}-\varepsilon^Y_{it}]\\
-  &=Var[\varepsilon^X_{it}]+Var[\varepsilon^Y_{it}] \;&\text{(A-2)}\\
+  \mathbb{Var}[\mathcal E_{it}|t]&=\mathbb{Var}[\varepsilon^X_{it}-\varepsilon^Y_{it}|t]\\
+  &=\mathbb{Var}[\varepsilon^X_{it}|t]+\mathbb{Var}[\varepsilon^Y_{it}] \;&\text{(A-2)}\\
 \end{align}
 
 
@@ -384,10 +390,10 @@ because $Var[\varepsilon^Y_{it}|S_{it}>s]=Var[\varepsilon^Y_{it}|t]=Var[\varepsi
 Note: I don't need (A-2) for true inputs $X^*_{it}$ and productivity $\omega_{it}$ distributions
 
 \begin{align}
-  \mathbb{E}[\mathcal{X}_{it}]&=\mathbb{E}[\ln X^*_{it}]+\mathbb{E}[\varepsilon^Y_{it}]\\
-  &=\mathbb{E}[\ln X^*_{it}] \\
+  \mathbb{E}[\mathcal{X}_{it}|t]&=\mathbb{E}[\ln X^*_{it}|t]+\mathbb{E}[\varepsilon^Y_{it}]\\
+  &=\mathbb{E}[\ln X^*_{it}|t] \\
   \\
-  Var[\mathcal{X}_{it}]&=Var[\ln X^*_{it}]+Var[\varepsilon^Y_{it}]\\
+  \mathbb{Var}[\mathcal{X}_{it}|t]&=\mathbb{Var}[\ln X^*_{it}|t]+Var[\varepsilon^Y_{it}]\\
 \end{align}
 
 .footer[[&#9654; Using instruments](#gnr-iv) [&#9654; Using second moments](#sec-mom)]
@@ -441,7 +447,7 @@ name: future
 name: final_slide
 count: false
 layout: false
-class: center middle 
+class: center middle last
 
 [hansmartinez.com](hansmartinez.com)
 
@@ -458,87 +464,12 @@ plot(qr)
 <!-- .footer[ .full-width[Hello there]] -->
 
 ---
-class: inverse center middle
+class: inverse center middle 
 count: false
-
 ## Appendix
 
----
-layout: true
-count: false
 
----
 
-> **Identification assumption** : larger firms do not overreport inputs. 
-
-- Costlier to keep the double accounting, higher probability to be denounced to the authority, and access to other legal tools to reduce their tax liabilities.
-- Evidence from tax evasion literature: Small and medium size firms .small[Slemrod, 2019]
-
-Let $L(X^*_{it},S_i)=\tau [\Pi(X^*_{it})-\Pi(X_{it})]-C(X_{it}-X^*_{it},S_{i})$. Therefore, for large firms $S_i=s$.
-
-$$\begin{equation}\label{eq:l_ic}
- \mathbb{E}[L(X^*_{it},S_i)|X^*_{it},S_{i}=s]=0
-\end{equation}$$
-
----
-layout: true
-count: false
-### Estimation strategy
-
----
-count: false
-
-Recovering the joint distribution $f(y_{it},x_{it},p_{t},s_i)=f(y_{it},x_{it},x^*_{it},p_{t},\omega_{it},\omega_{it-1},s_i)$ from the data $\mathcal{O}=\{Y_{it},X_{it},P_{t},S_{i}\}_{i\in I, t \in T}$.
-
-Assumptions: 
-1. $f_1(y_{it}|x_{it}, x_{it}^*,\omega_{it},\omega_{it-1}, s_{i}, p_{t})=f_1(y_{it}|x_{it}^*,\omega_{it})$
-1. $f_2(p_{t}|x_{it}, x_{it}^*,\omega_{it},\omega_{it-1}, s_{i})=f_2(p_{t}|x_{it}^*)$
-1. $f_3(\omega_{it}|x_{it}, x_{it}^*,\omega_{it-1}, s_{i}, p_{t})=f_3(\omega_{it},|\omega_{it-1})$
-1. $f_4(x_{it}|x_{it}^*,\omega_{it},\omega_{it-1}, s_{i}, p_{t})=f_4(x_{it}|x_{it}^*,s_{i})$
-
----
-count: false
-
-Recast joint distribution as
-
-$$\begin{aligned}
- f&(y_{it},x_{it},p_{t},s_i)\\
- &= f(y_{it},x_{it},p_{t},\omega_{it},\omega_{it-1},x^*_{it},s_i) \\ \notag
- &= f_1(y_{it}| x^*_{it},\omega_{it})
- f_2(p_{it}|x^*_{it},\omega_{it})
- f_3(\omega_{it}|\omega_{it-1})
- f_4(x_{it}|x^*_{it},s_i)
- f(\omega_{it-1})f(x_{it}^*,s_i) \notag
-\end{aligned}$$
-
----
-count: false
-
-Assuming $f(y_{it},x_{it},p_{t},s_i)$ is time invariant, we can form the quasi likelihood function as follows:
-
-$$\begin{equation*}
- \label{eq:mle_def}
- \sum_{i\in I}\left(
- \sum_{t\in T} \log f(y_{it},x_{it},p_{t},s_i)
- \right) \equiv
- \sum_{i\in I} l(D_i;\alpha)
-\end{equation*}$$
-
-in which $D_i=(Y_{it},X_{it},P_{t},S_{i})$ and
-
----
-count: false
-
-$$\begin{aligned} \label{eq:mle}
- l(D_i:\alpha) &\equiv l(D_i;\theta, f_1,f_2,f_3,f_4)\notag\\
- &= \sum_{t\in T}\log \bigg\{ 
- \int f_1(y_{it} - g(x^*_{it})+\omega_{it}) \\
- & f_2\left(-\ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)+\ln\left(\frac{G_x(x^*_{it})X^*_{it}}{G(x^*_{it})}\right)\right)\\
- & f_3(\omega_{it}-h(\omega_{it-1})) \\
- & f_4(0|s_{i})^{\mathbb 1 [L(x^*_{it},s_i)\ge 0]}
- f_4(x_{it}-x^*_{it}|s_{i})^{\mathbb 1 [L(x^*_{it},s_i) < 0]}dx^* \bigg\} \\
- & + \sum_{t\in T}\log f(\omega_{it-1})f(x_{it}^*,s_i)
-\end{aligned}$$
 
 ---
 layout: false
@@ -732,6 +663,60 @@ In my case, $m_0=\beta \ln X^* + g^{-1}(X^*)$ and $G[\cdot]=\inf\{\nu:\int_{0}^\
 
 .footer[[&#9664; Back](#future)]
 
+---
+layout: false
+count: false
+
+Recovering the joint distribution $f(y_{it},x_{it},p_{t})=f(y_{it},x_{it},x^*_{it},p_{t},\omega_{it})$ from the data $\mathcal{O}=\{Y_{it},X_{it},P_{t}\}_{i\in I, t \in T}$.
+
+Assumptions: 
+1. $f_1(y_{it}|x_{it}, x_{it}^*,\omega_{it}, p_{t})=f_1(y_{it}|x_{it}^*)$
+2. $f_2(p_{t}|x_{it}, x_{it}^*,\omega_{it}, p_{t})=f_2(p_{t}|x_{it}^*)$
+3. $f_3(x_{it}|x_{it}, x_{it}^*,\omega_{it}, p_{t})=f_4(x_{it}|x_{it}^*)$
+
+---
+count: false
+
+Recast joint distribution as
+
+$$\begin{aligned}
+ f&(y_{it},x_{it},p_{t})\\
+ &= f(y_{it},x_{it},p_{t},\omega_{it},x^*_{it}) \\ \notag
+ &= f_1(y_{it}| x^*_{it},\omega_{it})
+ f_2(p_{it}|x^*_{it})
+ f_3(x_{it}|x^*_{it})
+ f(x_{it}^*,\omega_{it-1}) \notag
+\end{aligned}$$
+
+---
+count: false
+
+Assuming $f(y_{it},x_{it},p_{t})$ is time-invariant, we can form the quasi-likelihood function as follows:
+
+$$\begin{equation*}
+ \label{eq:mle_def}
+ \sum_{i\in I}\left(
+ \sum_{t\in T} \log f(y_{it},x_{it},p_{t})
+ \right) \equiv
+ \sum_{i\in I} l(D_i;\alpha)
+\end{equation*}$$
+
+in which $D_i=(Y_{it},X_{it},P_{t})$ and
+
+---
+count: false
+
+$$\begin{aligned} \label{eq:mle}
+ l(D_i:\alpha) &\equiv l(D_i;\theta, f_1,f_2,f_3)\notag\\
+ &= \sum_{t\in T}\log \bigg\{ 
+ \int f_1(y_{it} - g(x^*_{it})-\varepsilon^Y_{it}) \\
+ & f_2\left(-\ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)+\ln\left(\frac{G_x(x^*_{it})X^*_{it}}{G(x^*_{it})}\right)\right)\\
+ & f_3(x_{it}-x^*_{it}) \bigg\} \\
+ & + \sum_{t\in T}\log f(\omega_{it},x_{it}^*)
+\end{aligned}$$
+
+.footer[[&#9664; Back](#future)]
+
 
 ---
 layout: true
@@ -833,6 +818,7 @@ results %>%
   add_header_above(c(" "=1, "\\(\\beta\\)"=3,"\\(\\delta\\)"=3),escape=FALSE)
 
 ```
+.footer[[&#9664; Back](#future)]
 
 ---
 layout: false
@@ -1013,19 +999,27 @@ name: model
 ### A model of tax evasion by input overreporting
 ---
 
-- Firms choose input overreporting $\varepsilon^X$,
+- First, productivity shocks $\omega_{it}$ are realized. Firms observe input $\rho_t$ and output $P$ prices
 
-- given their true profits $P\mathbb{E}[y]-\rho x^*$ and tax rate $\tau$.
+- Firms choose optimal inputs given productivity, prices, and the production function
 
+\begin{equation*}
+  \max_{x_{it}} P_t\mathbb{E}[ x_{it}^\beta e^{\omega_{it}+\varepsilon_{it}}]-\rho_t x_{it}
+\end{equation*}
+
+  - Optimal input choice is $x_{it}^*=\left(\frac{\beta P_t e^{\omega_{it}}}{\rho_t}\right)^{\frac{1}{1-\beta}}$. 
+  - Output is $y_{it}=x^{*\beta}_{it}e^{\omega_{it}+\varepsilon_{it}}$
+
+---
+
+- Then, firms choose input overreporting $\varepsilon^X$ given their true expected profits $P\mathbb{E}[y]-\rho x^*$ and tax rate $\tau$. 
+  
 - Firms get caught with probability $p(\varepsilon^X)$ and are punished with cost $\kappa$
 
-- With probability $1-p(\varepsilon^X)$, firms gain $\rho\tau\varepsilon^X$
-
-
 \begin{align*}
-    \max_{\varepsilon^X \in [0,\infty)} (1-\tau)(P\mathbb{E}[y]-\rho x^*)+[1-p(\varepsilon^X)]\rho\tau\varepsilon^X - p(\varepsilon^X)\kappa \\  
+  \max_{\varepsilon^X \in [0,\infty)} [1-p(\varepsilon^X)]&\left[(P\mathbb{E}[y]-\rho x^*) -\tau[P\mathbb{E}[y]-\rho(x^*+\varepsilon^X)]\right]\\
+  +p(\varepsilon^X)&\left[(1-\tau)(P\mathbb{E}[y]-\rho x^*)-\kappa\right]
 \end{align*}
-
 
 ---
 layout: false
@@ -1038,6 +1032,9 @@ layout: false
 - Tax evasion $\varepsilon^X$ decreases if the probability of getting caught $p(\varepsilon^X)$ or punishment $\kappa$ increase
 - increases if input prices $\rho$ or the tax rate $\tau$ increase
 - properties (potentially) exploited in identification
+
+.footer[[&#9664; Back to Bias](#bias) [&#9664; Back to Id-Strat](#id-strat)]
+
 
 ---
 layout: false
@@ -1055,4 +1052,4 @@ For example, $p(\varepsilon)=p(C=1|\varepsilon)=1-e^{-\varepsilon}$
 - $p'=e^{-\varepsilon}$, $p''=-e^{-\varepsilon}$
 - Equation above implies $\varepsilon+\frac{\kappa}{\rho\tau}\ge 2$
 
-.footer[[&#9664; Back](#foc)]
+.footer[[&#9664; Back](#bias)]
