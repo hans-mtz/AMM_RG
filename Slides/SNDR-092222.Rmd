@@ -140,12 +140,41 @@ with $\theta$, $\nu_1$, $\nu_2$ mutually statistically independent, $E(\theta)\l
   \mathcal W_{it}&= \omega_{it}+(1-\beta)\varepsilon^Y_{it}
 \end{align}
 
+---
+### Option 1
 
 \begin{align}
   (\omega_{it} , X^*_{it-1}) \;&\text{Flexible input}\\
   (\varepsilon^X_{it} , X^*_{it-1})\;&\text{Flexible input + Evasion timing}\\
   (\omega_{it} , \varepsilon^X_{it})\;&\text{Evasion timing}
 \end{align}
+
+---
+### Option 2
+
+
+
+\begin{align}
+  \mathcal X_{it}&= \ln X^*_{it} + \varepsilon^Y_{it} \\
+  \mathcal W_{it}&= g^{-1}(X^*_{it})+(1-\beta)\varepsilon^Y_{it} \;&\text{Monotonicity}
+\end{align}
+
+---
+layout: false
+### Hu, Schennach, and Shiu (2021)
+
+\begin{align}
+  Y&=m_0(X^*)+\eta \\
+  X&=X^*+\varepsilon \\
+  \varepsilon &\not\perp X^*
+\end{align}
+
+1. $m_0$ monotone function
+2. $\mathbb{E}[\eta| X^*]=0$, $\eta\perp\varepsilon$
+3. $f(y|x^*,x)=f(y|x^*)$
+4. $G[f(x|x^*)]=x^*$
+
+In my case, $m_0=\beta \ln X^* + g^{-1}(X^*)$ and $G[\cdot]=\inf\{\nu:\int_{0}^\nu f(x|x^*)dx \ge 0.9\}$
 
 
 
@@ -518,7 +547,7 @@ layout: true
 
 ---
 
-```{r <chunk-label>, echo = FALSE}
+```{r <chunk-label>, echo = FALSE, eval=FALSE}
 results<-read.csv("tables/results.csv")
 opts <- options(knitr.kable.NA = "")
 # knitr::kable(results, digits=3)

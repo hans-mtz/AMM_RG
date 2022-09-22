@@ -5,8 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Hans Martinez" />
     <script src="SNDR-092222_files/header-attrs/header-attrs.js"></script>
-    <script src="SNDR-092222_files/kePrint/kePrint.js"></script>
-    <link href="SNDR-092222_files/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="mycss.css" type="text/css" />
   </head>
@@ -88,12 +86,41 @@ with `\(\theta\)`, `\(\nu_1\)`, `\(\nu_2\)` mutually statistically independent, 
   \mathcal W_{it}&amp;= \omega_{it}+(1-\beta)\varepsilon^Y_{it}
 \end{align}`
 
+---
+### Option 1
 
 `\begin{align}
   (\omega_{it} , X^*_{it-1}) \;&amp;\text{Flexible input}\\
   (\varepsilon^X_{it} , X^*_{it-1})\;&amp;\text{Flexible input + Evasion timing}\\
   (\omega_{it} , \varepsilon^X_{it})\;&amp;\text{Evasion timing}
 \end{align}`
+
+---
+### Option 2
+
+
+
+`\begin{align}
+  \mathcal X_{it}&amp;= \ln X^*_{it} + \varepsilon^Y_{it} \\
+  \mathcal W_{it}&amp;= g^{-1}(X^*_{it})+(1-\beta)\varepsilon^Y_{it} \;&amp;\text{Monotonicity}
+\end{align}`
+
+---
+layout: false
+### Hu, Schennach, and Shiu (2021)
+
+`\begin{align}
+  Y&amp;=m_0(X^*)+\eta \\
+  X&amp;=X^*+\varepsilon \\
+  \varepsilon &amp;\not\perp X^*
+\end{align}`
+
+1. `\(m_0\)` monotone function
+2. `\(\mathbb{E}[\eta| X^*]=0\)`, `\(\eta\perp\varepsilon\)`
+3. `\(f(y|x^*,x)=f(y|x^*)\)`
+4. `\(G[f(x|x^*)]=x^*\)`
+
+In my case, `\(m_0=\beta \ln X^* + g^{-1}(X^*)\)` and `\(G[\cdot]=\inf\{\nu:\int_{0}^\nu f(x|x^*)dx \ge 0.9\}\)`
 
 
 
@@ -461,72 +488,7 @@ layout: true
 
 ---
 
-&lt;table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
-&lt;caption&gt;100 repetitions, 95% confidence intervals&lt;/caption&gt;
- &lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="empty-cells: hide;" colspan="1"&gt;&lt;/th&gt;
-&lt;th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #111111; margin-bottom: -1px; "&gt;\(\beta\)&lt;/div&gt;&lt;/th&gt;
-&lt;th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #111111; margin-bottom: -1px; "&gt;\(\delta\)&lt;/div&gt;&lt;/th&gt;
-&lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Model &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; LCI &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; UCI &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; LCI &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; UCI &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; OLS &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.30 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.23 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.08 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; IV &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.63 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.85 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.29 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; ACF+ &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.46 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.36 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.72 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.01 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.99 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.03 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; GNR- &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.40 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.37 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.44 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.64 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.54 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.76 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; GNR+ &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.40 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.37 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.44 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.69 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.67 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.72 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
 
 ---
 layout: false
