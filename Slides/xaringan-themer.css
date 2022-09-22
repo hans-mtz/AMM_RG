@@ -275,7 +275,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 /* Extra CSS */
 .small {
   font-size: 80%;
-  color: #807F83;
+  color: #4F2683;
 }
 .large {
   font-size: 130%;
@@ -289,7 +289,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   flex: 1 1 auto;
 }
 .footer {
-  color: #807F83;
+  color: #4F2683;
   position: fixed;
   top: 95%;
   left: 0;
