@@ -30,16 +30,19 @@ count: false
 name: motivation
 ### Motivation and research question
 
-- Tax evasion has **not been satisfactorily** addressed in Prod. Fun. estimation
-
-  - Tax evasion is **widespread** .small[(Slemrod, 2019) [&amp;#9654; Stats](#tax-stats)]
-  - Not classical measurement error .small[correlated with the firm's characteristics; not mean zero]
-
+- Tax evasion is **widespread** and **significant** .small[(Slemrod, 2019)]
+  - Long-standing concern for developing countries; 
+  - Growing concern for developed countries (2008) 
+  - US: Tax-gap 18.3% (2008-2010) .small[(IRS, 2016) [&amp;#9654; Stats](#tax-stats)]
+--
+count: false
+- Tax evasion is **hard to measure**
+  - Concealing behavior from firms/individuals (Surveys)
+  - Inaccessible data: Admin data ; Experiments
 --
 count: false
 - Ignoring tax evasion leads to **biased** estimates of **productivity**
   - Intuition: lower reported profits &amp;#9654; lower measured productivity
-
 --
 count: false
 - New estimation strategy to recover **productivity and tax evasion**
@@ -50,6 +53,8 @@ count: false
 ???
 
 - Tax evasion is often Treated as a classical measurement error .small[(e.g., Blalock et al., 2004, p.204)]
+  - correlated with the firm's characteristics; 
+  - not mean zero
 
 - Measuring tax evasion is a **non-trivial** problem due to firm's incentives to conceal their behavior
 
@@ -60,11 +65,11 @@ count: false
 name: over-r
 ### Input overreporting by fake invoices
 
-- Recent empirical evidence from Ecuador suggests more **relevant** than we thought .small[[&amp;#9654; (Carrillo et al. 2022)](#carrillo)]
+- More **relevant** than we thought .small[Ecuador: [&amp;#9654; (Carrillo et al. 2022)](#carrillo)]
 
-  - Quantitatively large .small[Up to 14% of a firm's annual purchases]
-  - Not unique to small firms .small[larger firms actively overreport inputs]
-  - Firms at the top of the size distribution do not evade by overreporting
+  - Quantitatively large .small[up to 14% of total purchases]
+  - Not unique to small firms .small[Self-employed, smallest firm]
+  - Very large firms do not evade by overreporting .small[Profit shifting (Bustos et al., 2022)]
 
 --
 count: false
@@ -75,52 +80,38 @@ count: false
 
 --
 count: false
-- Largely **overlooked** by the literature .small[Most studies focus on revenue underreporting]
+- Largely **overlooked** by the literature .small[Revenue underreporting focused]
 
 ???
 
-How do I solve my question?
+- Up to 14% of a firm's annual purchases
+- Larger firms actively overreport inputs
+- Very large corporations can use more sophisticated avenues of tax avoidance that do not require evasion using fake receipts. Like profit shifting, transfers to lower-tax countries (Bustos et al., 2022)
 
-- Recent empirical evidence about firm's evasion decisions 
-- Structural approach leveraging from firm's optimal behavior
-- Recent (and old) developments in the econometrics of unobservables 
+
 
 ---
-### Why does it matter?
-
-- Production function estimation
-  
-  - Productivity bias due to tax evasion .small[Proxy var (Gandhi, Navarro, and Rivers, 2020 [GNR]; Ackerberg, Caves, Frazer, 2015 [ACF])]
---
-count: false
-  - Wider dispersion (ranking is preserved?)  .small[Productivity gap (Syverson, 2011)]
---
-count: false
-  - Systematic overreporting of intermediate inputs .small[Measurement error on capital (Collard et al., 2020; Ursenbach's JMP)]
-
---
 count: false
 name: lit
-- Tax evasion: .small[[&amp;#9654; Lit conventions](#tax-conv) [&amp;#9654; Lit Overview](#tax-stats)]
+### Why does it matter?
+
+- Tax evasion: .small[[&amp;#9654; Lit conventions](#tax-conv) [&amp;#9654; Lit Overview](#tax-stats) [&amp;#9654; Corporate tax evasion](#firms-evasion)]
   - Estimates using commonly available data .small[[&amp;#9654; Traces of income](#traces) (Pissarides and Weber, 1989; Artavanis, 2016; Paulus, 2015; Dunbar and Fu, 2015)]
-  - Through cost overreporting: .small[[&amp;#9654; Corporate tax evasion: ](#firms-evasion) (Zumaya et al., 2021; Carrillo et al., 2022]
+  - Cost overreporting: .small[(Zumaya et al., 2021; Carrillo et al., 2022)]
+--
+count: false
+- Production function estimation
+  
+  - Bias due to tax evasion .small[Productivity (Gandhi, Navarro, and Rivers, 2020 [GNR]; Ackerberg et al., 2015 [ACF])]
+  - Wider dispersion (is ranking preserved?)  .small[Productivity gap (Syverson, 2011)]
+  - Systematic overreporting of intermediate inputs .small[Capital measurement error (Collard et al., 2020; Ursenbach's JMP)]
+
 
 
 ???
 
 - Econometrics of unobservables .small[(Hu,2022; Hu, Schennach, Shiu, 2022; Hu and Yao, 2022; Hu and Schennach, 2008)]
 
-**Contribution**
-
-- Production function .small[(Gandhi, Navarro, and Rivers , 2020 [GNR]; Ackerberg, Caves, Frazer , 2015 [ACF])]
-  - Systematic overreporting of intermediate inputs .small[(Measurement error on capital: Collard et al., 2020; Ursenbach's JMP)]
-
-- Tax evasion: .small[[&amp;#9654; Lit conventions](#tax-conv) [&amp;#9654; Lit Overview](#tax-stats)]
-  - Estimates of corporate tax evasion using commonly available data .small[([&amp;#9654; Traces of income:](#traces) Pissarides and Weber, 1989; Artavanis, 2016; Paulus, 2015; Dunbar and Fu, 2015); [&amp;#9654; Corporate tax evasion: ](#firms-evasion) Zumaya et al., 2021; [&amp;#9654; Carrillo et al., 2022](#cost-over))]
-
-- Econometrics of unobservables .small[(Hu,2022; Hu, Schennach, Shiu, 2022; Hu and Yao, 2022; Hu and Schennach, 2008)]
-
-- Corporate tax evasion by cost overreporting: Widespread and quantitatively important but largely understudied, mainly due to lack of data; until recently
 
 Traces of income: Researchers recover the true income of evaders by comparing an observable measure of true income between evaders and non-evaders.
 
@@ -128,7 +119,7 @@ Pissarides and Weber (1989): Authors assume food consumption is a function of in
 
 Systematic overreporting -&gt; Economics of firms decision on tax evasion
 
-Intermetiate inputs -&gt; flexible input assumption on productivity
+Intermediate inputs -&gt; flexible input assumption on productivity
 
 - Ignoring tax evasion in **production function** estimation leads to :
   1. biased estimates of the production function parameters
@@ -151,17 +142,16 @@ count: false
 1. Implement the method using **data** from developing countries 
 --
 count: false
-1. Contrast the **productivity distribution** with the mismeasured one .small[Magnitude of the bias, dispersion of the distribution, and ranking]
-   
+1. Compare estimates of **tax evasion** with previous studies
 --
 count: false
-1. Compare estimates of **tax evasion** with previous studies
+1. Contrast the **productivity distribution** with the mismeasured one .small[Magnitude of the bias, dispersion of the distribution, and ranking]
 
 --
 count: false
 1. Study the **policy** implications
-  - **efficient reallocation** of resources from low- to high-productivity firms .small[(Eslava et al., 2004; Levy, 2018)]
-  - **efficient targeting** to improve government tax revenue
+  - **Effect of e-invoice** on cost overrerporting .small[(OECD,2017; Castro et al.,2016)] 
+  - **Reallocation** of resources from low- to high-productivity firms .small[(Eslava et al., 2004; Levy, 2018)]
 
 ---
 layout: false
@@ -192,7 +182,7 @@ layout: false
   
 - We want to estimate the production function (PF) and productivity `\(\omega_{it}\)`, allowing for classical measurement error `\(\varepsilon^Y_{it}\)`
 
-`\(Y_{it}=G(X^*_{it})e^{\omega_{it}+\varepsilon^Y_{it}}\)`
+`\(Y_{it}=G(X_{it})e^{\omega_{it}+\varepsilon^Y_{it}}\)`
 
 - We are also interested in the Markov process of productivity (AR1)
 
@@ -203,7 +193,7 @@ layout: false
 name: bias
 ### Tax evasion and the productivity bias
 
-- Firms' reported inputs are their true inputs `\(X^*\)` inflated by `\(e^{\varepsilon^Y_{it}}\)` to evade taxes
+- Reported inputs are true inputs `\(X^*\)` inflated by `\(e^{\varepsilon^X_{it}}\)` to evade taxes
 
 `\(X_{it}=X^*_{it}e^{\varepsilon^X_{it}}\)` with `\(\varepsilon_{it}^X\ge0\)` and `\(\varepsilon_{it}^X\not\perp X^*\)` .small[ [&amp;#9654; microfoundation](#model)]
 
@@ -308,7 +298,9 @@ I can now recover `\(\delta=[\delta_0,\delta_1]'\)`
 
 `\begin{align}
   \mathbb{E}[\mathcal W_{it}|\mathcal W_{it-1}]&amp;=\\
-  \mathbb{E}[\omega_{it}|\mathcal W_{it-1}]&amp;=\delta_0+\delta_1\mathbb{E}[\omega_{it-1}+(1-\beta)\varepsilon^Y_{it-1}|\mathcal W_{it-1}]-\mathbb{E}[(1-\beta)\varepsilon^Y_{it}|\mathcal W_{it-1}]\\
+  \mathbb{E}[\omega_{it}|\mathcal W_{it-1}]&amp;=\delta_0+\delta_1\mathbb{E}[\omega_{it-1}+(1-\beta)\varepsilon^Y_{it-1}|\mathcal W_{it-1}]\\
+  &amp;-\mathbb{E}[(1-\beta)\varepsilon^Y_{it}|\mathcal W_{it-1}]\\
+  &amp;+\mathbb{E}[\eta_{it}|\mathcal W_{it-1}]\\
   &amp;=\delta_0+\delta_1\mathbb{E}[\omega_{it-1}|\mathcal W_{it-1}]
 \end{align}`
 
@@ -469,8 +461,7 @@ name: tax-stats
 - RD and "bunching" analysis of kinks and notches: .small[Spain (Almunia and Lopez-Rodriguez, 2018); Ecuador (Carrillo et al., 2012)]
 - Traces
 
-.footer[[&amp;#9664; Back-Motivation](#motivation)]
-.footer[[&amp;#9664; Back-Relevance](#lit)]
+.footer[[&amp;#9664; Back-Motivation](#motivation)[&amp;#9664; Back-Relevance](#lit)]
 
 ---
 name: traces
