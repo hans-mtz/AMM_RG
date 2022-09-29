@@ -492,7 +492,7 @@ count: false
 layout: false
 class: center middle last
 
-[hansmartinez.com](hansmartinez.com)
+[hansmartinez.com](https://hansmartinez.com)
 
 ```{r, out.width="90%"}
 library(qrcode)
@@ -854,10 +854,9 @@ opts <- options(knitr.kable.NA = "")
 results %>%
   knitr::kable(caption="100 repetitions, 95% confidence intervals",
       col.names=c("Model","Estimate","LCI","UCI","Estimate","LCI","UCI"),
-      digits=2,
-      escape=FALSE) %>%
+      digits=2) %>%
   kable_classic(full_width = F, html_font = "Cambria") %>%
-  add_header_above(c(" "=1, "\\(\\beta\\)"=3,"\\(\\delta\\)"=3),escape=FALSE)
+  add_header_above(c(" "=1, "\\[\\beta\\]"=3,"'\\(\\delta\\)'"=3),escape=TRUE)
 
 ```
 .footer[[&#9664; Back](#future)]
