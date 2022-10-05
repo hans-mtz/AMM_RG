@@ -93,8 +93,9 @@ name: motivation
 --
 count: false
 - **Measuring** tax evasion is **non-trivial**
-  - Concealing behavior from firms/individuals .small[Unlikely in surveys]
-  - Inaccessible data: Admin data; Experiments
+  - Direct: unreliable .small[Surveys: Concealing behavior] </br> 
+  &emsp; &emsp; &ensp; time and resource-consuming .small[Admin data; Experiments]
+  - Indirect: **productivity** must be considered
   
 --
 count: false
@@ -256,7 +257,7 @@ name: bias
 
 - Firms overreport their true inputs $X^*_{it}$ by $e^{\varepsilon^X_{it}}$ to evade taxes
 
-$X_{it}=X^*_{it}e^{\varepsilon^X_{it}}$ with $\varepsilon_{it}^X\ge0$ and $\varepsilon_{it}^X\not\perp X^*$ .small[ [&#9654; Microfoundation](#model)[&#9654; Justification](#true-ins)]
+$X_{it}=X^*_{it}e^{\varepsilon^X_{it}}$ with $\varepsilon_{it}^X\ge0$ and $\varepsilon_{it}^X\not\perp X^*_{it}$ .small[ [&#9654; Microfoundation](#model)[&#9654; Justification](#true-ins)]
 
 - Bias: Difference between the naively estimated $\tilde\omega_{it}$ and true productivity $\omega_{it}$
 
@@ -356,6 +357,7 @@ Likewise,
 \end{align}
 
 ---
+name: markov
 ### Markov process of productivity
 
 
@@ -369,6 +371,7 @@ I can now recover $\delta=[\delta_0,\delta_1]'$
   =&\delta_0+\delta_1\mathbb{E}[\omega_{it-1}|\mathcal W_{it-1}]
 \end{align}
 
+.footer[Preliminary MC simulations: [&#9654; DGP](#mc-sim)[&#9654; Results](#mc-res)]
 
 ---
 name: deconv
@@ -385,7 +388,7 @@ From the 1st stage, I also learn the **distribution** $m$ of $\varepsilon^Y_{it}
 
 > where $h^d$ is the density of $\mathcal Z^d\in \{\mathcal{E,X,W}\}$ .small[(Meister, 2009)]
 
-I can use non-parametric density deconvolution methods
+I can use non-parametric density **deconvolution methods**
 
 ---
 ### Deconvolution: the intuition
@@ -845,6 +848,7 @@ layout: true
 
 
 ---
+name: mc-res
 
 ```{r <chunk-label>, echo = FALSE}
 results<-read.csv("tables/results.csv")
@@ -856,10 +860,11 @@ results %>%
       col.names=c("Model","Estimate","LCI","UCI","Estimate","LCI","UCI"),
       digits=2) %>%
   kable_classic(full_width = F, html_font = "Cambria") %>%
-  add_header_above(c(" "=1, "\\[\\beta\\]"=3,"'\\(\\delta\\)'"=3),escape=TRUE)
+  add_header_above(c(" "=1, "\\(\\beta=0.4\\)"=3,"\\(\\delta=0.8\\)"=3),escape=TRUE)
 
 ```
-.footer[[&#9664; Back](#future)]
+
+.footer[[&#9664; Back](#markov)]
 
 ---
 layout: false
