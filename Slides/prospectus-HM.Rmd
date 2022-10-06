@@ -3,7 +3,7 @@ title: "Tax evasion and productivity"
 subtitle: ""  
 author: 
   - "Hans Martinez"
-  - "Navarro, Rivers, Aguiar"
+  - "Navarro*, Rivers, Aguiar"
 #date: '`r format(Sys.Date(),"%b %d, %Y")`'
 output:
   xaringan::moon_reader:
@@ -50,6 +50,8 @@ style_duo_accent(
   primary_color = "#4F2683",
   secondary_color = "#807F83",
   inverse_header_color = "#FFFFFF",
+  inverse_text_color = "#FFFFFF",
+  inverse_background_color = "#4F2683",
   base_font_size = "30px",
   title_slide_background_image = "Horizontal_Rev.png",
   title_slide_background_size = "4.5% no-repeat",
@@ -80,55 +82,15 @@ style_duo_accent(
   code_font_google   = google_font("IBM Plex Mono")
 )
 ```
-
-count: false
-name: motivation
-### Motivation and research question
-
-- Tax evasion is **widespread** and **significant** .small[(Slemrod, 2019)]
-
-  - Developing countries: Long-standing concern; Developed: growing (2008) 
-  - US: Tax-gap 18.3% (2008-2010) .small[(IRS, 2016) [&#9654; Stats](#tax-stats)]
-  
---
-count: false
-- **Measuring** tax evasion is **non-trivial**
-  - Direct: unreliable .small[Surveys: Concealing behavior] </br> 
-  &emsp; &emsp; &ensp; time and resource-consuming .small[Admin data; Experiments]
-  - Indirect: **productivity** must be considered
-  
---
-count: false
-- Ignoring tax evasion leads to **biased** estimates of **productivity**
-
---
-count: false
-- **RQ:** New estimation **strategy** to recover **tax evasion and productivity**
-
-
-???
-
-- Tax evasion through **overreporting of inputs** by fake invoices
-
-
-- Tax evasion is often Treated as a classical measurement error .small[(e.g., Blalock et al., 2004, p.204)]
-  - correlated with the firm's characteristics; 
-  - not mean zero
-
-- Measuring tax evasion is a **non-trivial** problem due to firm's incentives to conceal their behavior
-
-- Intuitively, the fewer inputs the firm utilizes to produce output the more productive it is. Tax evasion incentivizes firms to underreport revenues/overreport inputs. Both make firms appear less productive
-  
-
----
 name: over-r
-### Evasion by input overreporting
+count: false
+### Tax evasion by input overreporting
 
 - More **relevant** than we thought .small[Ecuador: [&#9654; (Carrillo et al. 2022)](#carrillo)]
 
-  - Quantitatively large .small[up to 14% of total purchases]
-  - Not unique to small firms .small[vs. Self-employed, smallest firm]
-  - Very large firms do not overreport inputs .small[e.g., Profit shifting (Bustos et al., 2022)]
+  - Quantitatively large .small[up to 14% of total annual purchases]
+  - Not unique to small firms .small[vs. previous consensus]
+  - Very large firms do not overreport inputs .small[More sophisticated (Profit shifting: Bustos et al., 2022); Higher risk of getting caught: third-party reporting (ISO), government attention]
 
 --
 count: false
@@ -141,55 +103,57 @@ count: false
 count: false
 - Largely **overlooked** by the literature .small[Revenue-underreporting focused]
 
+
 ???
 
-- Up to 14% of a firm's annual purchases
-- Larger firms actively overreport inputs
-- Very large corporations can use more sophisticated avenues of tax avoidance that do not require evasion using fake receipts. Like profit shifting, transfers to lower-tax countries (Bustos et al., 2022)
+.footer[[&#9654; Evasion vs Avoidance](#tax-conv)]
 
+
+---
+### Research Questions
+
+- What are the effects of ignoring this type of evasion on production function and productivity estimation?
+
+- How can we recover productivity in the presence of tax evasion?
+
+- How can we learn about tax evasion with commonly available data like manufacturing surveys?
+
+- What are the policy implications of using the wrong measures of productivity due to tax evasion?
+
+- What could be the policy recommendations, if we're successful?
 
 
 ---
 count: false
 name: lit
-### Why does it matter?
+### Contribution
 
-- Tax evasion: .small[[&#9654; Lit conventions](#tax-conv) [&#9654; Lit Overview](#tax-stats) [&#9654; Corporate tax evasion](#firms-evasion)]
+- I provide a **new estimation strategy** to recover **tax evasion** using firm-level data
 
-  - Estimates using commonly available data .small[[&#9654; Traces of income](#traces) (Pissarides and Weber, 1989; Artavanis, 2016; Paulus, 2015; Dunbar and Fu, 2015)]
-  - Cost overreporting .small[(Zumaya et al., 2021; Carrillo et al., 2022)]
+  - [&#9654; Corporate tax evasion](#firms-evasion) by cost overreporting .small[[&#9654; Traces of income](#traces) (Pissarides and Weber, 1989; Artavanis, 2016; Paulus, 2015)]
+
 --
 count: false
-- Production function and productivity estimation
-  
-  - Bias due to tax evasion .small[Productivity (Gandhi, Navarro, and Rivers, 2020 [GNR]; Ackerberg et al., 2015 [ACF]); Productivity gap (Syverson, 2011)]
-  - Systematic overreporting of intermediate inputs .small[Measurement error on capital (Collard et al., 2020; Ursenbach, 2022)]
+- I show that ignoring tax evasion leads to **biased estimates** of productivity
+  - Production function and productivity estimation .small[(Gandhi, Navarro, and Rivers, 2020 [GNR]; Ackerberg et al., 2015); Productivity gap (Syverson, 2011)]
 
+--
+count: false
+- I estimate productivity despite the **systematic** overreporting of **intermediates**
+  - Measurement error on capital .small[(Collard et al., 2020; Ursenbach, 2022)]
 
+---
+class: inverse, middle
 
-???
+### KEY INSIGHT
 
-- Econometrics of unobservables .small[(Hu,2022; Hu, Schennach, Shiu, 2022; Hu and Yao, 2022; Hu and Schennach, 2008)]
+The first-order conditions of the cost-minimization problem of the firms are informative about optimal input utilization
 
+Since I have a subset of non-evading firms, I can back up input overreporting of tax-evading firms, up to a white noise
 
-Traces of income: Researchers recover the true income of evaders by comparing an observable measure of true income between evaders and non-evaders.
+I can then recover productivity using this tax-evasion analog
 
-Pissarides and Weber (1989): Authors assume food consumption is a function of income but not of kind of income. A higher ratio of food purchases to reported income of the self-employed (vs employees) implies the self-employed understate their income.
-
-Systematic overreporting -> Economics of firms decision on tax evasion
-
-Intermediate inputs -> flexible input assumption on productivity
-
-- Ignoring tax evasion in **production function** estimation leads to :
-  1. biased estimates of the production function parameters
-  2. biased estimates of productivity
-  3. a reshuffling of firms in the productivity distribution
-  - Intuitively, the fewer inputs the firm utilizes to produce output the more productive it is. Tax evasion incentivizes firms to underreport revenues/overreport inputs. Both make firms appear less productive
-
-- Any attempt to estimate **tax evasion** at the firm level should account for productivity
-  - Intuitively, tax evasion is the difference between reported and true profits. True profits depend on productivity
-
-- Misallocation lit
+Moreover, I can use deconvolution methods to recover the tax evasion distribution
 
 ---
 layout: false
@@ -236,19 +200,19 @@ count: false
 
 ---
 layout: false
-### The standard environment
+### The standard setting
 
 - We observe output $Y_{it}$, reported inputs $X_{it}$, and prices $P_t$. 
 
 $\mathcal O = \{Y_{it}, X_{it}, P_{t}\}_{i\in I, t \in T}$
   
-- We want to estimate the production function (PF) and productivity $\omega_{it}$, allowing for classical measurement error $\varepsilon^Y_{it}$
+- We want to estimate the production function $G$ and </br> productivity $\omega_{it}$, allowing for classical measurement error $\varepsilon^Y_{it}$
 
 $Y_{it}=G(X_{it})e^{\omega_{it}+\varepsilon^Y_{it}}$
 
 - We are also interested in the Markov process of productivity (AR1)
 
-$\omega_{it}=\delta_0 + \delta_1 \omega_{it-1}+\eta_{it}$
+$\omega_{it}=\delta_0 + \delta_1 \omega_{it-1}+\eta_{it}$ with $\mathbb{E}[\eta_{it}|\omega_{it-1}]=0$
 
 
 ---
@@ -257,7 +221,7 @@ name: bias
 
 - Firms overreport their true inputs $X^*_{it}$ by $e^{\varepsilon^X_{it}}$ to evade taxes
 
-$X_{it}=X^*_{it}e^{\varepsilon^X_{it}}$ with $\varepsilon_{it}^X\ge0$ and $\varepsilon_{it}^X\not\perp X^*_{it}$ .small[ [&#9654; Microfoundation](#model)[&#9654; Justification](#true-ins)]
+$X_{it}=X^*_{it}e^{\varepsilon^X_{it}}$ with $\varepsilon_{it}^X\ge0$ and $\varepsilon_{it}^X\not\perp X^*_{it}$ .small[ [&#9654; Microfoundation](#model)[&#9654; Justification (+)](#true-ins)]
 
 - Bias: Difference between the naively estimated $\tilde\omega_{it}$ and true productivity $\omega_{it}$
 
@@ -298,11 +262,11 @@ name: id-strat
 ---
 layout: false
 name: gnr
-### 1st stage
+### Estimating the production function
 
-Let $G(X^*_{it})e^{\omega_{it}+\varepsilon^Y_{it}}=X^{*\beta}_{it}e^{\omega_{it}+\varepsilon^Y_{it}}$
+Assume Cobb-Douglas: $G(X^*_{it})e^{\omega_{it}+\varepsilon^Y_{it}}=X^{*\beta}_{it}e^{\omega_{it}+\varepsilon^Y_{it}}$
 
-1st Stage: GNR (2020)
+Apply 1st Stage of GNR (2020) using only non-evaders:
 
 \begin{align*}
     \ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)+\varepsilon^X_{it}&=\ln\beta - \varepsilon^Y_{it} \\
@@ -311,35 +275,37 @@ Let $G(X^*_{it})e^{\omega_{it}+\varepsilon^Y_{it}}=X^{*\beta}_{it}e^{\omega_{it}
 
 It works because $\mathbb{E}[\varepsilon^Y_{it}|S_{it}>s]=\mathbb{E}[\varepsilon^Y_{it}]=0$
 
-.footer[[&#9654; ACF breaks](#acf)]
+.footer[[&#9654; ACF](#acf)]
 
 
 ---
-### 2nd stage might fail
+### Failing to estimate productivity's AR(1)
 
-Can only evaluate GNR's 2nd stage for $S_{it}>s$
+GNR's 2nd stage can be computed only for $S_{it}>s$
 
 \begin{align}
     \mathcal Y_{it}&\equiv \ln Y_{it}-\varepsilon^Y_{it}-\beta \ln X_{it}\\
-    &= \omega_{it}\;&\text{(A-1)}\\
+    &= \omega_{it}\\
     \\
-    \mathbb{E}[\mathcal Y_{it}|\mathcal Y_{it-1},S_{it}>s] &= \mathbb{E}[\omega_{it}|\omega_{it-1},S_{it}>s] 
+    \mathbb{E}[\mathcal Y_{it}|\mathcal Y_{it-1},S_{it}>s] &= \delta_0+\delta_1\mathbb{E}[\omega_{it}|\omega_{it-1},S_{it}>s] + \mathbb{E}[\eta_{it}|\omega_{it-1},S_{it}>s]
 \end{align}
 
-However, it will not work because of the selection on $S$, i.e., 
+You can't recover $\delta=[\delta_0,\delta_1]'$ because of the selection on $S$, i.e., 
 
-$$\mathbb{E}[\omega_{it}|S_{it}>s]\not=\mathbb{E}[\omega_{it}]$$
+$$\mathbb{E}[\eta_{it}|S_{it}>s]\not=\mathbb{E}[\eta_{it}]\not=0$$
 
 ---
 ### Proposed solution
 
-However, for every firm, I can form
+For every firm, form $\mathcal E_{it}$ with input cost share and $\beta$ from 1st stage
 
 \begin{align}
     \mathcal E_{it}\equiv&\ln\left(\frac{\rho_t X_{it}}{P_{t}Y_{it}}\right)-\ln\beta\\
     &=\ln\left(\frac{\rho_tX^*_{it}}{P_{t}Y_{it}}\right)-\ln\beta+\varepsilon^X_{it}\\
     &=-\varepsilon^Y_{it} +\varepsilon^X_{it}
 \end{align}
+
+
 
 ---
 ### Trading unobservables
@@ -361,13 +327,14 @@ name: markov
 ### Markov process of productivity
 
 
-I can now recover $\delta=[\delta_0,\delta_1]'$
+I can now recover $\delta$
 
 \begin{align}
   \mathbb{E}[\mathcal W_{it}|\mathcal W_{it-1}]=&\\
   \mathbb{E}[\omega_{it}|\mathcal W_{it-1}]=&\delta_0+\delta_1\mathbb{E}[\omega_{it-1}+(1-\beta)\varepsilon^Y_{it-1}|\mathcal W_{it-1}]\\
   &-\mathbb{E}[(1-\beta)\varepsilon^Y_{it}|\mathcal W_{it-1}]
   +\mathbb{E}[\eta_{it}|\mathcal W_{it-1}]\\
+  \\
   =&\delta_0+\delta_1\mathbb{E}[\omega_{it-1}|\mathcal W_{it-1}]
 \end{align}
 
