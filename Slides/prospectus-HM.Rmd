@@ -9,7 +9,7 @@ output:
   xaringan::moon_reader:
     css: ["xaringan-themer.css", "mycss.css"]
     nature:
-      slideNumberFormat: "%current%/16" #/%total%"
+      slideNumberFormat: "%current%/18" #/%total%"
       highlightStyle: github
       highlightLines: true
       ratio: 16:9
@@ -280,6 +280,16 @@ $G[f_{X|X^*}(\cdot|x^*)]\equiv E[x|x*,S>s]=x^*$
 
 I could recover $(m_0, f_{\eta}, f_{\varepsilon}, f_{X^*})$
 
+---
+### Next steps
+
+- Data:
+  - Ecuador: merge other databases and transform variables to real prices
+  - Colombia: Update database (?)
+  
+- Figure out the deconvolution estimation (keep CD's PF) for:
+  - Ecuador: Food products, (check if there's any other once the merged database is ready)
+  - Colombia: Food products, Apparel, and Plastic products
 
 ---
 name: final_slide
