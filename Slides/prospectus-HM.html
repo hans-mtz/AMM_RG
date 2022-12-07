@@ -4,7 +4,6 @@
     <title>Tax evasion and productivity</title>
     <meta charset="utf-8" />
     <meta name="author" content="Hans Martinez" />
-    <meta name="author" content="Navarro*, Rivers, Aguiar" />
     <script src="prospectus-HM_files/header-attrs/header-attrs.js"></script>
     <script src="prospectus-HM_files/kePrint/kePrint.js"></script>
     <link href="prospectus-HM_files/lightable/lightable.css" rel="stylesheet" />
@@ -17,14 +16,321 @@ class: center, middle, inverse, title-slide
 
 # Tax evasion and productivity
 ### Hans Martinez
-### Navarro*, Rivers, Aguiar
+### Dec 07, 2022
 
 ---
 
+count: false
 
 
 
 
+## Agenda
+
+- Testing FOC in the data
+  - Ecuador
+  - Colombia
+- Moving away from Cobb-Douglas
+
+---
+### Estimating FOC
+
+I estimated the FOC of my setup 
+
+`\begin{equation}
+    \mathbb{E}\left[\ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)| S_{it}&gt;s\right]+\mathbb{E}[\varepsilon^X_{it}| S_{it}&gt;s]=\ln\beta - \mathbb{E}[\varepsilon^Y_{it}| S_{it}&gt;s]
+\end{equation}`
+
+- using different measures of size
+  - `\(\varepsilon^Y \perp S\)`: Capital and Labor related (Employees, Wages)
+  - `\(\varepsilon^Y \not\perp S\)`: Sales, Output, Intermediates
+- for the top quantiles (80th and above)
+- I focused on the industries with the largest number of firms
+
+---
+### Estimating FOC
+
+Under the assumptions of my setup:
+
+`\begin{equation}
+    \mathbb{E}\left[\ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)\right]+\mathbb{E}[\varepsilon^X_{it}] &gt;
+    \mathbb{E}\left[\ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)| S_{it}&gt;s\right]+\mathbb{E}[\varepsilon^X_{it}| S_{it}&gt;s]
+\end{equation}`
+
+Data:
+- Ecuador: (2019) Intermediates are raw materials (no energy, no services)
+- Colombia: (1981-1991) Intermediates are real intermediates (raw materials, services, and energy)
+
+---
+&lt;table class=" lightable-classic" style="font-family: Cambria; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Ecuador (2019)&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; SIC &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Industry &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Obs. &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Avg. Sales (millions) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SD Sales (millions) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Missing obs. Sales &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Elaboración de productos alimenticios &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 264 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 45.4451 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 90.6574 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C13 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fabricación de productos textiles &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.2051 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.8850 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fabricación de substancias y productos químicos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 54 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.7292 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32.6836 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fabricación de productos de caucho y plástico &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 61 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.4129 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24.1976 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; C23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Fabricación de otros productos minerales no metálicos &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35.9671 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 68.9193 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+&lt;table class=" lightable-classic" style="font-family: Cambria; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Colombia (1981-1991)&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; SIC &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Industry &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Obs. &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Avg. Sales (thousand) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SD Sales (thousand) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Missing obs. Sales &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 311 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FABRICACIÓN DE PRODUCTOS ALIMENTICIOS EXCEPTO BEBIDAS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11049 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 205.8703 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 565.2579 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 321 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FABRICACIÓN DE TEXTILES &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5158 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 163.3330 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 783.5119 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 322 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FABRICACIÓN DE PRENDAS VESTIR EXCEPTO CALZADO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10819 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28.6946 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 90.6575 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 324 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FABRICACIÓN DE CALZADO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2833 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39.0749 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 145.7815 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 342 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; IMPRENTAS, EDITORIALES E INDUSTRIAS CONEXAS &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3943 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.6789 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 296.8678 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 352 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FABRICACIÓN DE OTROS PRODUCTOS QUIMICOS
+(Pinturas, farmaceuticos, de limpieza) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3274 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 222.9821 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 589.4674 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+&lt;table class=" lightable-classic" style="font-family: Cambria; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Colombia (1981-1991) (continued)&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SIC &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Industry &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Obs. &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Avg. Sales (thousand) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SD Sales (thousand) &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Missing obs. Sales &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 356 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PRODUCTOS DEL PLASTICOS N.E.P.
+(Juguetes, bolsas de nylon, etc.) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96.8504 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 281.8613 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 369 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FABRICACIÓN DE OTROS PRODUCTOS MINERALES NO METALICOS
+(Cemento, cal y yeso) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3333 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 113.9368 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 326.9722 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 381 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FABRICACIÓN DE PRODUCTOS METÁLICOS, EXCEPTO MAQUINARIA Y EQUIPO &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6231 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58.2949 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 158.5884 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 382 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; CONSTRUCCIÓN DE MAQUINARIA EXCEPTO ELÉCTRICA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3474 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 53.1017 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 170.0781 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+---
+&lt;img src="../Figures/C10.svg" width="90%" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="../Figures/ECweird.svg" width="90%" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="../Figures/COL311.svg" width="90%" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="../Figures/COL322.svg" width="90%" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="../Figures/COL356.svg" width="90%" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="../Figures/COL381-321.svg" width="90%" style="display: block; margin: auto;" /&gt;
+---
+
+&lt;img src="../Figures/COLweird.svg" width="90%" style="display: block; margin: auto;" /&gt;
+---
+### In summary
+
+- Some evidence of tax evasion through cost overreporting, for manufacturing industries:
+  -  C10-Food products in Ecuador (2019), and 
+  -  311-Food products, 322-Apparel, 356-Plastic products in Colombia (1981-1991)
+
+- For other industries:
+  - Production function might not be Cobb-Douglas
+  - Changes in common technology or evasion behavior over time
+  - Large established firms might be the non-compliers
+
+---
+### Moving away from CD
+
+`\begin{align}
+  Y&amp;=m_0(X^*)+\eta \\
+  X&amp;=X^*+\varepsilon \\
+  \varepsilon &amp;\not\perp X^*
+\end{align}`
+
+**Theorem Hu et al.(2022)**: Under the following assumptions, given the observed density `\(f_{Y,X}(Y,X)\)`:
+
+  1. Regularity conditions on densities `\(f_{X,X^*}, f_{X|X^*}, f_{X^*}\)`
+  2. Regression Error `\(\mathbb{E}[\eta| X^*]=0\)` and `\(\eta\perp\varepsilon\)`
+  3. Measurement error `\(f(y|x^*,x)=f(y|x^*)\)` and `\(G[f_{X|X^*}(\cdot|x^*)]=x^*\)`
+  4. Regression function `\(m_0\)` monotone function
+
+---
+### Moving away from CD
+
+**Theorem Hu et al.(2022) (*continued*...)**
+
+The equation 
+
+`\begin{equation}
+  f_{Y,X}(y,x) = \int_{\mathcal X^*} f_{\eta}(y-m_0(X^*))f_{X|X^*}(x|x^*)f_{X^*}(x^*)dx^* 
+\end{equation}`
+
+permits a unique solution `\((m_0,f_{\eta},f_{X|X^*},f_{X^*})\equiv \alpha_0\)`. The solution characterizes the nonparametric regression model `\(Y=m_0(X^*)+\eta\)`.
+
+---
+### Mapping to Tax Evasion
+
+`\(m_0\equiv\ln\left(\frac{G'(X)X}{G(X)}\right)\)`, for example,
+  - CD: `\(G(X)= \beta_0 + \beta_1 \ln X + \omega + \eta\)`; `\(m_0\equiv \beta_1\)`
+  - Trans-log: `\(G(X)= \beta_0 + \beta_1 \ln X + \beta_2 (\ln X)^2 + \omega + \eta\)`: `\(m_0\equiv\ln\left( \beta_1 + 2\beta_{2}\ln X \right)\)` for `\(X\in\left(exp(-\frac{\beta_1}{2\beta_2}),\infty\right)\)`
+
+`\(G[f_{X|X^*}(\cdot|x^*)]\equiv E[x|x*,S&gt;s]=x^*\)`
+
+I could recover `\((m_0, f_{\eta}, f_{\varepsilon}, f_{X^*})\)`
+
+
+---
+name: final_slide
+count: false
+layout: false
+class: center middle last
+
+[hansmartinez.com](https://hansmartinez.com)
+
+&lt;img src="prospectus-HM_files/figure-html/unnamed-chunk-8-1.png" width="90%" /&gt;
+
+.small[ Download slides: Scan QR with your phone's camera ]
+
+&lt;!-- .center[Link to slides: Scan me!] --&gt;
+&lt;!-- .footer[ .full-width[Hello there]] --&gt;
+
+---
+class: inverse center middle 
+count: false
+## Appendix
+
+---
 name: over-r
 count: false
 ### Tax evasion by input overreporting
@@ -62,7 +368,7 @@ count: false
 
 --
 count: false
-- If overreporting is so widespread and significant, then our measures of productivity are likely to be biased because it is a function of inputs
+- If overreporting is so widespread and significant, then our measures of productivity are likely to be biased because they are a function of inputs
 
 &gt; How can a researcher **recover productivity** in the presence of **tax evasion** through input overreporting?
 
@@ -343,7 +649,7 @@ class: center middle last
 
 [hansmartinez.com](https://hansmartinez.com)
 
-&lt;img src="prospectus-HM_files/figure-html/unnamed-chunk-1-1.png" width="90%" /&gt;
+&lt;img src="prospectus-HM_files/figure-html/unnamed-chunk-9-1.png" width="90%" /&gt;
 
 .small[ Download slides: Scan QR with your phone's camera ]
 
@@ -357,676 +663,6 @@ count: false
 
 
 
-
----
-layout: false
-count: false
-name: sum-stats
-
-&lt;!-- ![](tax_t.png){width="50%"} --&gt;
-
-&lt;img src="figures/tax_t.png" width="75%" style="display: block; margin: auto;" /&gt;
-
-
----
-
-![](figures/eaim.png)
-
----
-
-![](figures/colombia.png)
-
-.footer[[&amp;#9664; Back](#id-strat)]
-
-
----
-
-
-&lt;img src="figures/tax_dens_notrim.png" width="50%" style="display: block; margin: auto;" /&gt;
-
----
-
-&lt;img src="figures/tax_dens_over.png" width="50%" style="display: block; margin: auto;" /&gt;
-
-.footer[[&amp;#9664; Back](#id-strat)]
-
----
-name: tax-conv
-
-### Brief tax evasion literature overview
-
-Conventions in the literature .small[(Slemrod, 2019)]:
-- Tax avoidance: Legal actions to reduce tax liability
-- Tax evasion: Illegal actions to reduce tax liability
-- Informality: Small-scale economic activities unobserved by official authorities
-
-.footer[[&amp;#9664; Back](#lit)]
-
-
----
-name: tax-stats
-### What do they do in the tax evasion lit?
-
-- Random audits
-  - Tax gap: US, 18.3% overall; UK, 6.4% overall, 6.4% corporate income, 5 % individual, 11.1% VAT; Denmark, 2.2 % overall.
-  - Small- and medium-sized enterprises account for 50% of the overall tax gap in the UK .small[(HMRC, 2015)], 47% of individual income in the US, and 14.9% (self-employment income) in Denmark.
-- Admin data .small[Canada, UK, Brazil, Chile, China, Costa Rica, Ecuador, India, Pakistan, Rwanda, Tunisia, and Uganda.]
-- Experiments (RCT): .small[ Uruguay (Bergolo et al., 2018), Colombia (Ortega &amp; Scartascini, 2018), Chile (Pomenranz, 2015), Ecuador (Carrillo et al., 2017)]
-- RD and "bunching" analysis of kinks and notches: .small[Spain (Almunia and Lopez-Rodriguez, 2018); Ecuador (Carrillo et al., 2012)]
-- Traces
-
-.footer[[&amp;#9664; Back-Motivation](#motivation)[&amp;#9664; Back-Relevance](#lit)]
-
----
-name: traces
-### Traces of true income
-
-- Seminal paper Pissarides and Weber (1989): 
-  - Food consumption is a function of income and other characteristics, but not of kind of income, salary versus self-employment income
-  - A higher ratio of food purchases to reported income of the self-employed vs employees in the UK implies the self-employed understate their income
-- Most recent studies focus on individual income .small[
-  - Bank's credit multipliers for employees and self-employed in Greece (Artavanis, 2016); Public vs private sector employees in Estonia (Paulus, 2015); for Canada (Dunbar and Fu, 2015)]
-- Trace's estimates are considered as lower bounds of evasion (by the self-employed)
-  
-
-.footer[[&amp;#9664; Back](#lit)]
-
----
-name: firms-evasion
-### Firms' tax evasion
-
-- Import/export tariffs
-  - Mislabelling .small[(between China and Hong Kong: Feisman and Wei, 2004)] 
-- Payroll taxes
-  - Incentive to underreport labor and wages .small[(Mexico: Kumler et al., 2013)]
-- Value added tax (VAT)
-  - Incentive to underreport sales/overreport costs .small[(Chile: Pomeranz, 2015; for Brazil: Naritomi, 2016)]
-- Profit tax (Corporate income tax)
-  - Most recent work focuses on revenue underreporting .small[(Ecuador: Carrillo et al., 2017; US: Slemrod et at., 2017; Slemrod, 2019; Pomeranz and Vila-Belda, 2019)], 
-  - Few look into **cost overreporting** .small[(Carrillo et al., 2022)].
-
-.footer[[&amp;#9664; Back](#lit)]
-
----
-name: cost-over
-### Cost overreporting through fake invoices by ghost firms
-
-*Carrillo, Donaldson, Pomeranz, and Singhal (2022) NBER Working Paper*
-
-- Internationally prevalent
-  - OECD (2017) acknowledges fake invoicing pervasiveness.
-  - Mexico (Tax revenue loss 0.3% Mexico's GDP), Colombia (0.2%), Chile (0.2%), Poland (5.6%); Asia: South Korea and China; and Africa: Kenya and Rwanda. 
-- "Extremely sparse"
-  - Needed data is rare
-  - Pakistan: VAT rates reduced to zero, ghost firms decreased .small[(Waseem, 2020)]; ML algorithm to detect ghost firms .small[(Mittal et al., 2018)]
-
-
----
-name: carrillo
-### Carrillo et al. (2022)
-
-- Authors exploit **transaction-level data** from Ecuador and a **list of ghost firms** —pre-identified by the tax authority— to document new facts about the use of fake invoices to evade taxes. 
-- Data covers the period before and after **government intervention** —emails challenging ghost clients misreporting.
-- Ghost transactions are **widespread** and **quantitatively large** 
-  - Not limited to small, semi-formal firms; **Larger firms** are more likely to engage in ghost transactions
-  - Annual ghost purchases reached 14.1% of the value of firms' total purchases. 4.7% of potential clients engaged in ghost transactions.
-
-.footer[[&amp;#9664; Back](#over-r)]
-
----
-name: evidence
-### Empirical evidence
-
-**Carrillo et al. (2022)**
-
-- Firms at the top of the size distribution don't overreport inputs .small[
-  - Share of ghost deductions increases throughout much of the size distribution, *except at the very top* —very large corporations might have stronger incentives to avoid illegal behavior or they can use more sophisticated avenues of tax avoidance that do not require evasion using fake receipts (Bustos et al., 2022)]
-- Timing of the evasion decision .small[
-  - Ghost transactions are clustered toward the end of the tax year
-- Consistent with firms assessing their annual revenues at the end of the year and then utilizing ghost transactions to achieve a target reported profit level or rate for tax purposes]
-- Cost overreporting mainly on non-labor costs (intermediates) .small[
-  - Adjusting firms reduced most strongly non-labor costs: domestic purchases, other production costs, and imports]
-
-.footer[[&amp;#9664; Back](#id-strat)]
-
-
----
-### In the context of my approach
-
-- No economic activity behind overreporting .small[
-  - Ghost transactions bunch at round numbers
-- Ghost transactions bunch below the financial system payment threshold]
-- Monotonic relation between size and tax evasion .small[
-  - The probability of engaging in cost overreporting through ghost firms increases monotonically in firm revenue.]
-- No underreporting in firm-to-firm sales .small[
-  - There was no offsetting behavior as in revenue misreporting studies]
-
-
----
-name: id-sources
-### Possible sources of identification
-
-From theory
-1. Thresholds: changes in audit probability, penalties, or tax rates after passing a thresholds
-2. Unexpected changes in input prices: productivity increments to offset raises in prices will follow the Markov assumption and thus take longer than just misreporting because of higher incentives to evade taxes
-3. Timing of the misreporting decision: after realization of productivity and true inputs are chosen
-
-
----
-### Possible sources of identification
-
-From data
-1. Firms at the top of the size distribution do not overreport inputs
-2. Firms' characteristics correlated with tax evasion: 
-  1. Correlated with productivity: Revenue, market shares .small[(Carrillo et al., 2022)], firm's age .small[(Zumaya et at., 2021)], Owner's income .small[(Carrillo et al., 2022)], costs and assets ratio .small[(Gonzales and Velasques, 2013)]
-  2. Uncorrelated with productivity:  Results of previous audits .small[(Gonzalez and Velasquez, 2013)]
-
-.footer[[&amp;#9664; Back](#id-strat)]
-
----
-layout: false
-name: hu-sch
-### Hu, Schennach, and Shiu (2021)
-
-`\begin{align}
-  Y&amp;=m_0(X^*)+\eta \\
-  X&amp;=X^*+\varepsilon \\
-  \varepsilon &amp;\not\perp X^*
-\end{align}`
-
-1. `\(m_0\)` monotone function
-2. `\(\mathbb{E}[\eta| X^*]=0\)`, `\(\eta\perp\varepsilon\)`
-3. `\(f(y|x^*,x)=f(y|x^*)\)`
-4. `\(G[f(x|x^*)]=x^*\)`
-
-In my case, `\(m_0=\beta \ln X^* + g^{-1}(X^*)\)` and `\(G[\cdot]=\inf\{\nu:\int_{0}^\nu f(x|x^*)dx \ge 0.9\}\)`
-
-.footer[[&amp;#9664; Back](#future)]
-
----
-layout: false
-
-
-Recovering the joint distribution `\(f(y_{it},x_{it},p_{t})=f(y_{it},x_{it},x^*_{it},p_{t},\omega_{it})\)` from the data `\(\mathcal{O}=\{Y_{it},X_{it},P_{t}\}_{i\in I, t \in T}\)`.
-
-Assumptions: 
-1. `\(f_1(y_{it}|x_{it}, x_{it}^*,\omega_{it}, p_{t})=f_1(y_{it}|x_{it}^*)\)`
-2. `\(f_2(p_{t}|x_{it}, x_{it}^*,\omega_{it}, p_{t})=f_2(p_{t}|x_{it}^*)\)`
-3. `\(f_3(x_{it}|x_{it}, x_{it}^*,\omega_{it}, p_{t})=f_4(x_{it}|x_{it}^*)\)`
-
----
-
-
-Recast joint distribution as
-
-`$$\begin{aligned}
- f&amp;(y_{it},x_{it},p_{t})\\
- &amp;= f(y_{it},x_{it},p_{t},\omega_{it},x^*_{it}) \\ \notag
- &amp;= f_1(y_{it}| x^*_{it},\omega_{it})
- f_2(p_{it}|x^*_{it})
- f_3(x_{it}|x^*_{it})
- f(x_{it}^*,\omega_{it-1}) \notag
-\end{aligned}$$`
-
----
-
-
-Assuming `\(f(y_{it},x_{it},p_{t})\)` is time-invariant, we can form the quasi-likelihood function as follows:
-
-`$$\begin{equation*}
- \label{eq:mle_def}
- \sum_{i\in I}\left(
- \sum_{t\in T} \log f(y_{it},x_{it},p_{t})
- \right) \equiv
- \sum_{i\in I} l(D_i;\alpha)
-\end{equation*}$$`
-
-in which `\(D_i=(Y_{it},X_{it},P_{t})\)` and
-
----
-
-
-`$$\begin{aligned} \label{eq:mle}
- l(D_i:\alpha) &amp;\equiv l(D_i;\theta, f_1,f_2,f_3)\notag\\
- &amp;= \sum_{t\in T}\log \bigg\{ 
- \int f_1(y_{it} - g(x^*_{it})-\varepsilon^Y_{it}) \\
- &amp; f_2\left(-\ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)+\ln\left(\frac{G_x(x^*_{it})X^*_{it}}{G(x^*_{it})}\right)\right)\\
- &amp; f_3(x_{it}-x^*_{it}) \bigg\} \\
- &amp; + \sum_{t\in T}\log f(\omega_{it},x_{it}^*)
-\end{aligned}$$`
-
-.footer[[&amp;#9664; Back](#future)]
-
-
----
-layout: true
-
-### MC Simulations
----
-name: mc-sim
-
-**The model**
-
-- Price-taking firms maximize after-tax profits given input prices, taxes, optimal inputs, and size
-- The cost function of the tax-evasion decision `\(C(\varepsilon\le0)=0\)` `\(\frac{\partial C}{\partial \varepsilon}&gt;0\)` `\(\frac{\partial C}{\partial s}&lt;0\)`
-- Size is correlated with productivity
-
----
-
-Rearranging
-
-`\begin{align*}
-    \max_{\varepsilon^X \in [0,\infty)} (1-\tau)(Py-\rho x^*)+\rho\tau \varepsilon^X - p(\varepsilon^X)[\rho\tau\varepsilon^X-\kappa] \\  
-\end{align*}`
-
-`\begin{equation*}
-  V^E=\max_{\varepsilon^X_{it}} (1-\tau)\left(P_t \mathbb{E}[y_{it}] - \rho x_{it}^*\right)+\rho_t\tau \varepsilon^X_{it}-C(\varepsilon^X_{it}, s_{it})
-\end{equation*}`
-
-
----
-
-Functional forms in simulations
-
-`\begin{align*}
-  C(\varepsilon^X_{it}, s_{it})&amp;=\mathbf 1 (\varepsilon^X_{it}\ge0)\left[\alpha_0\varepsilon_{it}s^{-1}_{it}+\alpha_1^{\varepsilon_{it}}-1 \right]
-\end{align*}`
-
-Optimal overreporting
-
-`\begin{align}
-  \varepsilon^X_{it}&amp;=  \frac{\ln\left(\tau\rho_t-\alpha_0 s_{it}^{-1}\right)-\ln\ln\alpha_1}{\ln\alpha_1}
-\end{align}`
-
-
----
-
-- Optimal inputs are chosen given productivity, prices, and the production function
-
-`\begin{equation*}
-  V^T=\max_{x_{it}} P_t\mathbb{E}[ x_{it}^\beta e^{\omega_{it}+\varepsilon_{it}}]-\rho_t x_{it}
-\end{equation*}`
-
-- Optimal input choice is `\(x_{it}^*=\left(\frac{\beta P_t e^{\omega_{it}}}{\rho_t}\right)^{\frac{1}{1-\beta}}\)`. 
-- Output is `\(y_{it}=x^{*\beta}_{it}e^{\omega_{it}+\varepsilon_{it}}\)`
-
-
----
-
-- `\(n=1,000\)` firms and 4 periods `\(t=\{1,2,3,4\}\)` 
-- `\(\varepsilon^Y_{it}\sim N(0,1)\)`
-- `\(\omega_{it}=\delta\omega_{it}+\eta_{it}\)`; `\(\eta_{it}\sim N(0,1)\)` and 
-- `\(s_{it}=40\frac{1}{1+e^{\omega_{it}}}+ U[1,10]\)`
-- `\(P_t\sim U[1.5,2]\)`, `\(\rho_t\sim U[0.5,1]\)`
-
-
----
-layout: true
-### Recovering production function parameters
----
-
-1. OLS: `\(\ln y_{it} = \beta \ln x_{it} + \nu_{it}\)`
-2. 2SIV: 1S `\(\ln x_{it} = \gamma \ln x_{it-1} + \upsilon_{it}\)`; 2S `\(\ln y_{it} =  \beta \ln \hat{x}_{it} + \nu_{it}\)`
-3. ACF+: `\(\mathbb{E}[\eta_{it}|Z_{it}]\)` with `\(Z_{it}=\{1,\ln x_{it-2}, 2\ln x_{it-2}\}\)`
-4. GNR-
-5. GNR+
-
----
-
-| Parameter        | Value |
-|:----------------:|------:|
-|\\(\\beta\\)      | 0.40   |
-|\\(\\delta\\)     | 0.80   |
-|\\(\\alpha_0\\)   | 0.14  |
-|\\(\\alpha_1\\)   | 1.05  |
-|\\(\\tau\\)       | 0.30  |
-
-
----
-name: mc-res
-
-&lt;table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
-&lt;caption&gt;100 repetitions, 95% confidence intervals&lt;/caption&gt;
- &lt;thead&gt;
-&lt;tr&gt;
-&lt;th style="empty-cells: hide;" colspan="1"&gt;&lt;/th&gt;
-&lt;th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #111111; margin-bottom: -1px; "&gt;\(\beta=0.4\)&lt;/div&gt;&lt;/th&gt;
-&lt;th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"&gt;&lt;div style="border-bottom: 1px solid #111111; margin-bottom: -1px; "&gt;\(\delta=0.8\)&lt;/div&gt;&lt;/th&gt;
-&lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Model &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; LCI &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; UCI &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Estimate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; LCI &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; UCI &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; OLS &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.30 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.23 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.08 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; IV &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.63 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.85 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.29 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt;  &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; ACF+ &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.46 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.36 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.72 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.01 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.99 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.03 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; GNR- &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.40 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.37 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.44 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.64 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.54 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.76 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; GNR+ &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.40 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.37 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.44 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.69 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.67 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.72 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-.footer[[&amp;#9664; Back](#markov)]
-
----
-layout: false
-name: prd-bias
-### Bias of production function parameter
-
-OLS: `\(\mathbb{E}[\ln Y_{it}|x_{it}]=\mathbb{E}[\beta \ln(X^*_{it}+\varepsilon^X_{it})|x_{it}]+\mathbb{E}[\omega_{it}|x_{it}]\)`
-
-IV: `\(\mathbb{E}[\ln Y_{it}|x_{it-1}]=\mathbb{E}[\beta \ln(X^*_{it}+\varepsilon^X_{it})|x_{it-1}]\)`
-
-ACF: (1st stage) `\(\mathbb{E}[\ln Y_{it}]=\mathbb{E}[\beta\ln(X^*_{it})+ g^{-1}(X^*_{it})]\)`
-
-GNR: (1st stage) `\(\mathbb{E}[\ln\left(\frac{\rho_t (X^*_{it}+\varepsilon^X_{it})}{P_{t}Y_{it}}\right)]=\ln\beta\)`
-
-.footer[[&amp;#9664; Back](#bias)]
-
----
-name: data-slide
-
-### Data
-
-- Mexico
-  - Tax records: SAT-UNAM public study data requested through *INAI* .small[(National Institute of Information Access)]
-  - Firm-level data: Remote access or on-site .small[(Census, Annual, and Monthly Surveys)] 
-- Ecuador
-  - Tax records: Carrillo et al. (2022) data 
-  - Firm-level data: EMM (*Encuesta Manufactura y Minería* 2007-2010, 2012; *Encuesta Manufactura, Minería y Construcción* 2013-2015); ENSEM (*Encuesta Estructural Empresarial* 2017-2019); EE (*Encuesta Exhaustiva* 2011)
-
----
-
-### Data
-
-- Chile:
-  - Tax records: Gonzalez\* and Velasquez (2013) data from *Servicio de Impuestos Internos*. Not likely to get access
-  - Firm-level data: Good
-- Colombia:
-  - Tax records: Not available. 
-  - Supersociedades: Detailed financial data (Profits/losses, income per activity, income of operations, assets, debt, etc.)
-  - Firm-level data: Good
-
-Depending on similarities with Mexico and Ecuador, might estimate *bounds* for these two countries.
-
-.footer[[&amp;#9664; Back](#id-strat)]
-
----
-name: acf
-
-**ACF+**
-
-1st Stage
-
-`\begin{align*}
-  \ln Y_{it}&amp;=\beta\ln X^*_{it}+\beta\epsilon_{it} + \omega_{it} + \varepsilon^Y_{it} \\
-  \mathbb{E}[\ln Y_{it}|S_{it}&gt;s]&amp;=\mathbb{E}[\beta\ln(X^*_{it})+\omega_{it}|S_{it}&gt;s] &amp;\text{(A-1)}\\
-  &amp;=\mathbb{E}[\beta\ln(X^*_{it})+ g^{-1}(X^*_{it})|S_{it}&gt;s]\\
-  &amp;=\mathbb{E}[\varphi_X(X^*_{it})|S_{it}&gt;s]
-\end{align*}`
-
-If selection on `\(S=\{K,L,Y,M\}\)`, i.e., `\(\mathbb{E}[\omega_{it}|S_{it}&gt;s]\not=\mathbb{E}[\omega_{it}]\)`, then 2nd stage might not work.
-
----
-
-2nd Stage
-
-Markov assumption on productivity implies `\(\omega_{it}=\delta\omega_{it-1}+\eta_{it}\)`. Then,
-
-`\begin{align}
-  \varphi_X(X_{it}) - &amp;\delta\varphi_X(X_{it-1}) \\
-  &amp;= \beta\ln(X_{it}) + \omega_{it}- \delta\left(\beta\ln(X_{it}) + \omega_{it} \right)\\
-  &amp;= \beta(\ln X_{it}-\delta \ln X_{it-1})+ \omega_{it}-\delta\omega_{it-1}\\
-  &amp;= \beta(\ln X^*_{it}-\delta \ln X^*_{it-1})+ \beta(\epsilon_{it}-\delta \epsilon_{it-1}) + \eta_{it}
-\end{align}`
-
-`\begin{align}
-  \mathbb{E}[\beta(\epsilon_{it}-\delta \epsilon_{it-1})+\eta_{it}|Z_{it}]=0
-\end{align}`
-
-I recover `\(\beta\)` and `\(\delta\)` with GMM
-
-.footer[[&amp;#9664; Back](#gnr)]
-
-
----
-name: gnr-iv
-### Using instruments
-
-Finally, for tax-evasion
-
-`\begin{align}
-  \mathbb{E}[\mathcal E_{it}|Z_{it}]&amp;=\mathbb{E}[\epsilon_{it}-\varepsilon^Y_{it}|Z_{it}]\\
-  &amp;=\mathbb{E}[\epsilon_{it}|Z_{it}]
-\end{align}`
-
-`\(Z_{it}=\{P_t,\rho_t,\omega_{it},Y_{it-1},X_{it-1},\mathcal X_{it-1}, \mathcal W_{it-1}\}\)`
-
-`\(Z_{it}\cup X_{it}\)` if (A-2) holds
-
----
-
-Alternatively, I can work with true inputs `\(X^*\)`
-
-`\begin{align}
-  \mathbb{E}[\mathcal X_{it}|Z_{it}]&amp;=\mathbb{E}[\ln X^*_{it}+\varepsilon^Y_{it}|Z_{it}]\\
-  &amp;=\mathbb{E}[\ln X^*_{it}|Z_{it}]
-\end{align}`
-
-`\(Z_{it}=\{P_t,\rho_t,\omega_{it},Y_{it-1},X_{it-1},\mathcal X_{it-1}, \mathcal W_{it-1}\}\)`
-
-`\(Z_{it}\cup X_{it}\)` if (A-2) holds
-
-.footer[[&amp;#9664; Back](#deconv)]
-
-
----
-name: sec-mom
-### Second moments
-
-Also, `\(Var[\ln Y_{it}|t]=Var[\beta \ln X^* + \omega|t]+Var[\varepsilon^Y_{it}]\)`
-
-From the FOC of the firm's profit-maximization problem, we know `\(Var[\omega_{it}|t]=(1-\beta)^2Var[\ln X^*|t]\)`
-
-
----
-
-Also, note that by normalizing `\(\mathbb{E}[\omega_{it}]=0\)`
-
-`\begin{align}
-  Cov(\ln X^*_{it},\omega_{it}|t)&amp;= \mathbb{E}[\ln X^*_{it}\omega_{it}|t]-\mathbb{E}[\ln X^*_{it}|t]\mathbb{E}[\omega_{it}|t] \\
-  &amp;=\mathbb{E}[\ln X^*_{it}\omega_{it}|t]
-\end{align}`
-
-`\begin{align}
-  \mathbb{E}[\ln X^*_{it}\omega_{it}|t]&amp;=\mathbb{E}\left[(1-\beta)^{-1}
-    \left(
-      \omega_{it}+\ln\left(\beta P_t\rho_t^{-1}\right)
-      \right)
-        \omega_{it}
-      |t\right]\\
-  &amp;= (1-\beta)^{-1}\mathbb{E}\left[
-    \omega_{it}\omega_{it}+\omega_{it}\ln\left(\beta P_t\rho_t^{-1}\right)
-    |t\right]\\
-  &amp;= (1-\beta)^{-1}\left(\mathbb{E}[\omega_{it}\omega_{it}|t]
-    +\ln\left(\beta P_t\rho_t^{-1}\right)\mathbb{E}[\omega_{it}|t]
-  \right)\\
-  &amp;= (1-\beta)^{-1}\mathbb{E}[\omega_{it}\omega_{it}|t]\\
-  &amp;=(1-\beta)^{-1}Var[\omega_{it}|t]
-\end{align}`
-
----
-
-Using these results
-
-
-`\begin{align}
-  Var[\beta&amp;\ln X^*_{it}+\omega_{it}|t] \\
-  &amp;=\beta^2 Var[\ln X^*_{it}|t]+Var[\omega_{it}|t]+2\beta Cov[\ln X^*_{it},\omega_{it}|t]\\
-  &amp;=\beta^2 (1-\beta)^{-2} Var[\omega_{it}|t]+Var[\omega_{it}|t]+2\beta(1-\beta)^{-1}Var[\omega_{it}|t]\\
-  &amp;=(1-\beta)^{-2}Var[\omega_{it}|t]
-\end{align}`
-
----
-
-Then, the variance of `\(\omega_{it}\)` and `\(X^*_{it}\)` are identified 
-
-`\(Var[\ln Y_{it}|t]-Var[\varepsilon^Y_{it}]=(1-\beta)^{-2}Var[\omega_{it}|t]\)`
-
-`\(Var[\ln Y_{it}|t]-Var[\varepsilon^Y_{it}]=Var[\ln X^*_{it}|t]\)`
-
-Likewise, the mean of `\(X^*_{it}\)` is 
-
-`\(\mathbb{E}[\mathcal{X}_{it}]=\mathbb{E}[\ln X^*_{it}]+\mathbb{E}[\varepsilon^Y_{it}]=\mathbb{E}[\ln X^*_{it}]\)`
-
-.footer[[&amp;#9664; Back](#deconv)]
-
----
-layout: true
-### A model of tax evasion by input overreporting
----
-name: model
-
-- First, productivity shocks `\(\omega_{it}\)` are realized. Firms observe input `\(\rho_t\)` and output `\(P_t\)` prices
-
-- Firms choose optimal inputs given productivity, prices, and the production function
-
-`\begin{equation*}
-  \max_{x_{it}} P_t\mathbb{E}[ x_{it}^\beta e^{\omega_{it}+\varepsilon^Y_{it}}]-\rho_t x_{it}
-\end{equation*}`
-
-- Optimal input choice is `\(x_{it}^*=\left(\frac{\beta P_t e^{\omega_{it}}}{\rho_t}\right)^{\frac{1}{1-\beta}}\)`. Output is `\(y_{it}=x^{*\beta}_{it}e^{\omega_{it}+\varepsilon_{it}}\)`
-
----
-
-- Then, firms choose input overreporting `\(\varepsilon_{it}^X\)` given their optimal inputs `\(x_{it}^*\)`, tax rate `\(\tau_{t}\)`, probability of getting caught `\(p(\varepsilon_{it}^X)\)`, and punishment cost `\(\kappa_{t}\)`
-  
-`\begin{align*}
-  \max_{\varepsilon_{it}^X \in [0,\infty)} [1-p(\varepsilon_{it}^X)]&amp;\left[(P_t\mathbb{E}[y_{it}]-\rho_{t} x_{it}^*) -\tau_{t}[P_t\mathbb{E}[y_{it}]-\rho_{t}(x^*+\varepsilon_{it}^X)]\right]\\
-  +p(\varepsilon_{it}^X)&amp;\left[(1-\tau_{t})(P_t\mathbb{E}[y_{it}]-\rho_{t} x_{it}^*)-\kappa_{t}\right]
-\end{align*}`
-
-- Finally, the output shock is realized `\(\varepsilon_{it}^Y\)`
-
----
-layout: false
-### Properties of tax evasion
-
-`\begin{equation*}
-    \varepsilon_{it}^X=\frac{1-p(\varepsilon_{it}^X)}{p'(\varepsilon_{it}^X)}-\frac{\kappa_t}{\rho_t\tau_t}
-\end{equation*}`
-
-- Tax evasion `\(\varepsilon_{it}^X\)` decreases if the probability of getting caught `\(p(\varepsilon_{it}^X)\)` or punishment `\(\kappa_t\)` increase
-- increases if input prices `\(\rho_t\)` or the tax rate `\(\tau_t\)` increase
-- properties (potentially) exploited in identification
-
-.footer[[&amp;#9664; Back to Productivity bias](#bias) [&amp;#9664; Back to Id-Strategy](#id-strat)]
-
-
----
-layout: false
-name: soc
-### SOC of the tax evasion problem
-
-`\begin{equation*}
-  p''(\varepsilon^X)\ge -\frac{p'(\varepsilon^X)2\rho\tau}{\rho\tau\varepsilon^X+\kappa}
-\end{equation*}`
-
-Convexity, linearity, and lower bound for concavity.
-
-For example, `\(p(\varepsilon)=p(C=1|\varepsilon)=1-e^{-\varepsilon}\)`
-- `\(p(0)=0\)`, `\(p(\infty)=1\)`
-- `\(p'=e^{-\varepsilon}\)`, `\(p''=-e^{-\varepsilon}\)`
-- Equation above implies `\(\varepsilon+\frac{\kappa}{\rho\tau}\ge 2\)`
-
-.footer[[&amp;#9664; Back](#bias)]
-
----
-name: a-2
-### A-2
-
-- `\(\varepsilon^X_{it} \perp \varepsilon^Y_{it}\)`
-  - In the lit `\(\varepsilon^Y_{it}\not\in \mathcal{I_t}\)`, random noise
-  - Timing assumptions for identification are common in production functions and demand estimation .small[(Ackerberg et al., 2021; Ackerberg, 2019)]
-
-.footer[[&amp;#9664; Back](#id-strat)]
-
----
-name: true-ins
-
-### True inputs and evasion
-
-- Firms optimize true inputs maximizing before-tax profits
-  - Empirical evidence shows the number and value of fake invoices cluster towards the end of the tax year .small[Carrillo et al., 2022]
-  - In the tax-compliance literature, individual income is treated as given. &lt;/br&gt; However, we could think there is self-selection of individuals into jobs where evading taxes can be more or less difficult
-
-.footer[[&amp;#9664; Back](#bias)]
-
-
----
-name: contingency
-### Contingency plan
-
-1. Reverse engineering the quantile: Run for different values of `\(s\)`
-
-`\begin{align*}
-    \mathbb{E}\left[\ln\left(\frac{\rho_t X^*_{it}}{P_{t}Y_{it}}\right)| S_{it}&gt;s\right]+\mathbb{E}[\varepsilon^X_{it}| S_{it}&gt;s]&amp;=\ln\beta - \mathbb{E}[\varepsilon^Y_{it}| S_{it}&gt;s]
-\end{align*}`
-
-  - Intuition: if CD is true, `\(\beta\)` should _converge_ for a percentile interval
-  - Find the sweet spot: Choose the `\(s\)` in which `\(\beta\)` is stable
-
-2. Compliers vs. evaders
-   - China: state-owned vs. private firms
-   - ISO9000/14000 certified vs. non-certified
-
-.footer[[&amp;#9664; Back](#id-strat)]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
