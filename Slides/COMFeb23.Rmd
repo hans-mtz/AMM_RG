@@ -346,8 +346,8 @@ For example:
 
 ---
 
-```{r , echo = FALSE, out.width='90%', fig.align='center'}
-knitr::include_graphics('figures/Ecuador/ec_all.png')
+```{r , echo = FALSE, out.width="90%", fig.align='center'}
+knitr::include_graphics("figures/Ecuador/ec_all.png")
 ```
 
 ---
