@@ -24,5 +24,7 @@ Prospectus: [[Sep, 2022]](https://raw.githack.com/hans-mtz/Slides/main/Slides/pr
 
 9881: [[Feb, 2023]](https://raw.githack.com/hans-mtz/Slides/main/Slides/COMFeb23.html) 
 
+Market Power HGM : [[html]](https://raw.githack.com/hans-mtz/Slides/main/Quarto/MPHG-Slides/lcfi.html) 
+
 
 
